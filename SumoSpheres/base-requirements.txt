@@ -1,0 +1,17 @@
+Character Interactions
+    The player must be able to move around the map (e.g. strafing, jumping).
+    Player objects must be able to interact with the map (physics).
+    The player must have access to special abilities.
+    The player must be distinguishable from their opponent (costumes, colors, etc.).
+    The player must be able to either win/live or lose/die.
+
+User Interface
+    There must be a main menu where you can select to play the game or view settings.
+    You must be able to pause the game and quit.
+
+Environments
+    You must be able to fall of the edge.
+    There must be spawn points on the map.
+
+Camera
+    The camera must follow the players.
