@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public float speed;
     private Rigidbody rb;
@@ -17,5 +18,10 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
         rb.AddForce(movement * speed);
+
+        if(!isLocalPlayer)
+        {
+            return;
+        }
     }
 }
