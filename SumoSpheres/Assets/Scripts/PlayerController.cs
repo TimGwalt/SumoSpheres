@@ -11,26 +11,21 @@ public class PlayerController : NetworkBehaviour
     public override void OnStartLocalPlayer() {
         rb = GetComponent<Rigidbody>();
         GetComponent<MeshRenderer>().material.color = Color.cyan;
+        Vector3 initCameraPos = Camera.main.GetComponent<CameraController>().transform.position;
+        Camera.main.GetComponent<CameraController>().player = transform;
+        Camera.main.GetComponent<CameraController>().offset = initCameraPos;
     }
 
-    private void Start()
+    private void FixedUpdate()
     {
-        if(isLocalPlayer)
+        if(!isLocalPlayer)
         {
-            this.transform.GetChild(0).GetComponent<Camera>().enabled = true;
+            return;
         }
-    }
-
-    private void FixedUpdate() {
         float moveX =  Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
         rb.AddForce(movement * speed);
-
-        if(!isLocalPlayer)
-        {
-            return;
-        }
     }
 }
