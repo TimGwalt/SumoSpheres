@@ -163,7 +163,7 @@ PlayerSettings:
   APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 1
-  VertexChannelCompressionMask: 4054
+  VertexChannelCompressionMask: 214
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 9.0
   tvOSSdkVersion: 0
@@ -222,7 +222,7 @@ PlayerSettings:
   iOSMetalForceHardShadows: 0
   metalEditorSupport: 1
   metalAPIValidation: 1
-  iOSRenderExtraFrameOnPause: 0
+  iOSRenderExtraFrameOnPause: 1
   appleDeveloperTeamID: 
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
@@ -231,9 +231,9 @@ PlayerSettings:
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 0
   appleEnableProMotion: 0
-  clonedFromGUID: c0afd0d1d80e3634a9dac47e8a0426ea
-  templatePackageId: com.unity.template.3d@1.0.4
-  templateDefaultScene: Assets/Scenes/SampleScene.unity
+  clonedFromGUID: 00000000000000000000000000000000
+  templatePackageId: 
+  templateDefaultScene: 
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -293,10 +293,15 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   m_TemplateCustomTags: {}
   mobileMTRendering:
-    Android: 1
     iPhone: 1
     tvOS: 1
-  m_BuildTargetGroupLightmapEncodingQuality: []
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: Standalone
+    m_EncodingQuality: 1
+  - m_BuildTarget: XboxOne
+    m_EncodingQuality: 1
+  - m_BuildTarget: PS4
+    m_EncodingQuality: 1
   m_BuildTargetGroupLightmapSettings: []
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
@@ -420,7 +425,7 @@ PlayerSettings:
   switchAllowsRuntimeAddOnContentInstall: 0
   switchDataLossConfirmation: 0
   switchUserAccountLockEnabled: 0
-  switchSupportedNpadStyles: 3
+  switchSupportedNpadStyles: 6
   switchNativeFsCacheSize: 32
   switchIsHoldTypeHorizontal: 0
   switchSupportedNpadCount: 8
@@ -618,4 +623,4 @@ PlayerSettings:
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
-  legacyClampBlendShapeWeights: 0
+  legacyClampBlendShapeWeights: 1

@@ -8,8 +8,17 @@ public class PlayerController : NetworkBehaviour
     public float speed;
     private Rigidbody rb;
 
-    private void Start() {
+    public override void OnStartLocalPlayer() {
         rb = GetComponent<Rigidbody>();
+        GetComponent<MeshRenderer>().material.color = Color.cyan;
+    }
+
+    private void Start()
+    {
+        if(isLocalPlayer)
+        {
+            this.transform.GetChild(0).GetComponent<Camera>().enabled = true;
+        }
     }
 
     private void FixedUpdate() {
