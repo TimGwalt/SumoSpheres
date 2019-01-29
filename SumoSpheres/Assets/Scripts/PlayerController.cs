@@ -8,24 +8,21 @@ public class PlayerController : NetworkBehaviour
     public float speed;
     private Rigidbody rb;
 
-    public override void OnStartLocalPlayer() {
+    public override void OnStartLocalPlayer()
+    {
         rb = GetComponent<Rigidbody>();
         GetComponent<MeshRenderer>().material.color = Color.cyan;
-        Vector3 initCameraPos = Camera.main.GetComponent<CameraController>().transform.position;
-        Camera.main.GetComponent<CameraController>().player = transform;
-        Camera.main.GetComponent<CameraController>().offset = initCameraPos;
+        Camera.main.GetComponent<CameraController>().player = this.transform;
     }
 
     private void FixedUpdate()
     {
-        if(!isLocalPlayer)
+        if(isLocalPlayer)
         {
-            return;
+            float moveX =  Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
+            Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
+            rb.AddForce(movement * speed);
         }
-        float moveX =  Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveX, 0.0f, moveZ);
-        rb.AddForce(movement * speed);
     }
 }
