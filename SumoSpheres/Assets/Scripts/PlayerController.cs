@@ -8,6 +8,7 @@ public class PlayerController : NetworkBehaviour
     public float speed;
     public float jumpSpeed;
     private float distanceToGound;
+    private int lives = 3;
     private Rigidbody playerRB;
     private SphereCollider playerCollider;
     Transform cameraTransform;
@@ -54,5 +55,20 @@ public class PlayerController : NetworkBehaviour
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distanceToGound + 0.1f);
+    }
+    
+    public void die(){
+        lives --;
+        if (lives > 0)
+        {
+            gameObject.transform.position = new Vector3(1f, 10f, 1f);
+            //respawn
+        }
+        else
+        {
+            Destroy(gameObject);
+            //display message/menu
+            //update other clients
+        }
     }
 }
