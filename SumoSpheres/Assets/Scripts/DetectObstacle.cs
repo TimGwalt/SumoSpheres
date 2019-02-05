@@ -19,7 +19,7 @@ public class DetectObstacle : MonoBehaviour
             RaycastHit obstructionHit;
             if(Physics.Raycast(transform.position, player.position - transform.position, out obstructionHit, Mathf.Infinity))
             {
-                Debug.Log(obstructionHit.transform.gameObject);
+                obstructionHit.transform.gameObject.SendMessage("FadeObstacle", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
