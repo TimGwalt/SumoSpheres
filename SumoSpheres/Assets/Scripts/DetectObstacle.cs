@@ -5,11 +5,11 @@ using UnityEngine;
 public class DetectObstacle : MonoBehaviour
 {
     public Transform player;
-    private LayerMask fadeMask;
+   private LayerMask fadeMask;
 
     void Start()
     {
-        fadeMask = LayerMask.GetMask("FadeObstacle");
+        fadeMask = LayerMask.GetMask("Terrain");
     }
 
     void Update()
@@ -17,7 +17,7 @@ public class DetectObstacle : MonoBehaviour
         if (player)
         {
             RaycastHit obstructionHit;
-            if(Physics.Raycast(transform.position, player.position - transform.position, out obstructionHit, Mathf.Infinity))
+            if(Physics.Raycast(transform.position, player.position - transform.position, out obstructionHit, Mathf.Infinity, fadeMask))
             {
                 obstructionHit.transform.gameObject.SendMessage("FadeObstacle", SendMessageOptions.DontRequireReceiver);
             }
