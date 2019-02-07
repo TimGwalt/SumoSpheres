@@ -27,6 +27,7 @@ public class PlayerController : NetworkBehaviour
         // Set the main camera's target to the player's transform and get a reference to the main
         // camera's transform.
         Camera.main.GetComponent<ThirdPersonCamera>().target = this.transform;
+        Camera.main.GetComponent<DetectObstacle>().player = this.transform;
         cameraTransform = Camera.main.transform;
         distanceToGound = playerCollider.bounds.extents.y;
     }
