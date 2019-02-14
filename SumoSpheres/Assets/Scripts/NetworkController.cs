@@ -32,7 +32,7 @@ public class NetworkController : NetworkManager
         IntegerMessage msg = new IntegerMessage(curPlayer);
 
         // Call Add player and pass the message
-        ClientScene.AddPlayer(conn, 0, msg);
+        ClientScene.AddPlayer(conn, 0);
     }
 
     //Adding the player to the server.
@@ -53,6 +53,8 @@ public class NetworkController : NetworkManager
 
         // Add player object for connection
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+
+        curPlayer++;
     }
 
     private Transform UpdateSpawnPosition(Transform spawn)

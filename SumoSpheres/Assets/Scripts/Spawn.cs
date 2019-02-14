@@ -16,6 +16,7 @@ public class Spawn : MonoBehaviour
     {
         player = Resources.LoadAll("Prefabs/Characters") as GameObject[];
         SpawnIn();
+        Debug.Log(player[0]);
 
     }
 
