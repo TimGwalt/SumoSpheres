@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657993, g: 0.49641424, b: 0.57481825, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657928, g: 0.4964131, b: 0.5748174, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -281,18 +281,18 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 8462481123280524196, guid: 34ea54461212d55488a2d0eac50c8beb,
+  m_PlayerPrefab: {fileID: 8462481123280524196, guid: 3f493eef8a77f014190ab32fcdc53cad,
     type: 3}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: 
-  m_OnlineScene: Tim_Test
+  m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 8462481123280524196, guid: 34ea54461212d55488a2d0eac50c8beb, type: 3}
-  - {fileID: 5867317934379694533, guid: 1af52520d218e904f9608afa5f153cfb, type: 3}
-  - {fileID: 3211250182949213103, guid: 24fedd00a4123eb429bcbb7ba65dcc0a, type: 3}
-  - {fileID: 4842962036101894399, guid: e331cbdef8be0bf4ba8462e8c645d151, type: 3}
-  - {fileID: 392613941533509356, guid: 8b71c68418ba2de4b93bcda90eb3b76e, type: 3}
+  - {fileID: 8462481123280524196, guid: 3f493eef8a77f014190ab32fcdc53cad, type: 3}
+  - {fileID: 5867317934379694533, guid: 144ce7c6667bbf344af5b30710893f0f, type: 3}
+  - {fileID: 3211250182949213103, guid: 385419d8dd9f16541867aacedba890b2, type: 3}
+  - {fileID: 4842962036101894399, guid: 60860b6f1bd8b7f40b1129f9203ec5da, type: 3}
+  - {fileID: 392613941533509356, guid: 1ac2ac4b1f572e44ca4e9c0da755bdfc, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

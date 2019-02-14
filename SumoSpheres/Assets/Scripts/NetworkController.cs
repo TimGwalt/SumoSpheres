@@ -8,16 +8,33 @@ public class NetworkController : NetworkManager
     //One spawn point
     public NetworkStartPosition[] List;
     public static Transform spawnPosition;
+    public static GameObject[] characterList;
+
+    //subclass for sending network messages
+    public class NetworkMessage : MessageBase
+    {
+        public int chosenChar;
+    }
+    
 
     //index of cur player from the character selection
-    int curPlayer = CharacterList.index;
+    public int curPlayer;
     
 
     //Runs at the begining of every call.
     private void Start()
     {
+
+        //Make Array for childCount amount of characters
+        characterList = new GameObject[transform.childCount];
+
+        //Fill characterList array with child at their childCount
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            characterList[i] = transform.GetChild(i).gameObject;
+        }
+
         //Debug for initial value.
-        Debug.Log(curPlayer);
         //Intializeze the first spawn point.
         spawnPosition = List[0].transform;
         Debug.Log("index is: " + curPlayer + " coming into network");
@@ -32,14 +49,19 @@ public class NetworkController : NetworkManager
         IntegerMessage msg = new IntegerMessage(curPlayer);
 
         // Call Add player and pass the message
-        ClientScene.AddPlayer(conn, 0);
+        ClientScene.AddPlayer(conn, 0, msg);
     }
 
     //Adding the player to the server.
-    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
+    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader)
     {
+        NetworkMessage message = extraMessageReader.ReadMessage<NetworkMessage>();
+        curPlayer = message.chosenChar;
+        Debug.Log(curPlayer);
+
+
         //Select the prefab from the spawnable objects list
-        var playerPrefab = spawnPrefabs[curPlayer];
+        var playerPrefab = characterList[curPlayer + 1];
 
         //get spawnposition.
         spawnPosition = UpdateSpawnPosition(spawnPosition);
@@ -52,38 +74,42 @@ public class NetworkController : NetworkManager
         Debug.Log("character deployed as player" + curPlayer);
 
         // Add player object for connection
-        NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+        NetworkServer.AddPlayerForConnection(conn, characterList[curPlayer], playerControllerId);
 
-        curPlayer++;
     }
 
     private Transform UpdateSpawnPosition(Transform spawn)
     {
-
-        if(this.playerSpawnMethod == PlayerSpawnMethod.Random)
+        if (this.playerSpawnMethod == PlayerSpawnMethod.Random)
         {
             Debug.Log("Random");
-            return spawnPosition = List[Random.Range(0, List.Length)].transform;
+            spawn = List[Random.Range(0, List.Length)].transform;
+            spawnPosition = spawn;
+            if (GameObject.FindWithTag("Player").transform == spawnPosition)
+            {
+                UpdateSpawnPosition(spawnPosition);
+            }
+            return spawnPosition;
 
         }
 
-        if(this.playerSpawnMethod == PlayerSpawnMethod.RoundRobin)
+        if (this.playerSpawnMethod == PlayerSpawnMethod.RoundRobin)
         {
             Debug.Log("Round Robin");
-            for(int i= 0; i<= List.Length; i++)
+            for (int i = 0; i <= List.Length; i++)
             {
-                if(List[i].transform.Equals(spawn.transform))
+                if (List[i].transform.Equals(spawn.transform))
                 {
                     //Debug.Log("Last spawn was " + List[i].transform);
-                    if(i+1 == List.Length)
+                    if (i + 1 == List.Length)
                     {
                         //Debug.Log("restarting list");
                         return List[0].transform;
                     }
-                        //Debug.Log("Spawning at spawnPosition: " + List[i+1].transform);
-                        return List[i+1].transform;
+                    //Debug.Log("Spawning at spawnPosition: " + List[i+1].transform);
+                    return List[i + 1].transform;
                 }
-               
+
             }
 
         }

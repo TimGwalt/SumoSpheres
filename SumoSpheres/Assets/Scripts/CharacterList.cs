@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class CharacterList : MonoBehaviour
 {
@@ -71,9 +72,11 @@ public class CharacterList : MonoBehaviour
 
     public void Confirm()
     {
-        PlayerPrefs.SetInt("CharacterSelected",index);
+        PlayerPrefs.SetInt("CharacterSelected", index);
         Debug.Log("You've picked character:" + index);
         SceneManager.LoadScene("Tim_Test");
+        NetworkManager.singleton.GetComponent<NetworkController>().curPlayer = index;
+        characterList[index].SetActive(false);
     }
     // Update is called once per frame
     void Update()
