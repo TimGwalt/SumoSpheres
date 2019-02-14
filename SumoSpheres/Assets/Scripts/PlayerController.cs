@@ -15,6 +15,7 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
+        //hide mouse cursor
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -39,11 +40,20 @@ public class PlayerController : NetworkBehaviour
         {
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             Vector2 inputDirection = input.normalized;
+
+            //Character can only jump when they are touching the ground
             if(Input.GetKey(KeyCode.Space) & IsGrounded())
             {
                 playerRB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
             }
-            if(inputDirection != Vector2.zero)
+
+            //jumping using PS4 controller
+            //if (Input.GetButtonDown("PS4_X") & IsGrounded())
+            //{
+            //    playerRB.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+            //}
+
+            if (inputDirection != Vector2.zero)
             {
                 // Add force to the player dependent on input axes and camera direction.
                 Vector3 movement = new Vector3(input.x, 0.0f, input.y);
@@ -53,11 +63,13 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    //IsGrounded() returns true if the object is touching the ground
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distanceToGound + 0.1f);
     }
-    
+
+    //player only has 3 lives and will no longer respawn when out of lives
     public void die(){
         lives --;
         if (lives > 0)

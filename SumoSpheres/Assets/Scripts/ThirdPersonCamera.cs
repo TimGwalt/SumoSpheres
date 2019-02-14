@@ -9,10 +9,12 @@ public class ThirdPersonCamera : MonoBehaviour
     float pitch;
     float yaw;
     public float sensitivity = 10;
+
     // Float storing how far away the camera should be from the target.
     public float offset = 2.0f;
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.12f;
+
     // Vector containing the boundaries for the camera's pitch.
     public Vector2 pitchBounds = new Vector2(-10, 85);
     Vector3 rotationSmoothVelocity;
