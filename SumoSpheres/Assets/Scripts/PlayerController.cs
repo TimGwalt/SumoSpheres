@@ -12,9 +12,25 @@ public class PlayerController : NetworkBehaviour
     private Rigidbody playerRB;
     private SphereCollider playerCollider;
     Transform cameraTransform;
+    public Canvas canvas;
 
     public override void OnStartLocalPlayer()
     {
+        //Find the canvas object
+        GameObject tempObject = GameObject.Find("Menu Canvas");
+        if (tempObject != null)
+        {
+            //If object found , get the Canvas component from it.
+            canvas = tempObject.GetComponent<Canvas>();
+            if (canvas == null)
+            {
+                Debug.Log("Could not locate Canvas component on " + tempObject.name);
+            }
+        }
+
+        //Hide canvas at the start
+        canvas.gameObject.SetActive(false);
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -50,6 +66,8 @@ public class PlayerController : NetworkBehaviour
                 Vector3 actualMovement = cameraTransform.TransformDirection(movement);
                 playerRB.AddForce(actualMovement * speed);
             }
+
+            ScanForEscape();
         }
     }
 
@@ -70,6 +88,25 @@ public class PlayerController : NetworkBehaviour
             Destroy(gameObject);
             //display message/menu
             //update other clients
+        }
+    }
+
+    private void ScanForEscape()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            if (canvas.gameObject.activeSelf)
+            {
+                canvas.gameObject.SetActive(false);
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                canvas.gameObject.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 }
