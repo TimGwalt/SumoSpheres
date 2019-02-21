@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68947c353905f41fe831acdbe439873a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 0}
-  otherCell: {fileID: 0}
+  cell: {fileID: 4975459588193468644, guid: 71729fa4e78a144cab22ae81d2c526c3, type: 3}
+  otherCell: {fileID: 4975459588193468644, guid: 71729fa4e78a144cab22ae81d2c526c3,
+    type: 3}
   direction: 0

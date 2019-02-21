@@ -2,20 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MazeCell : MonoBehaviour
+public class MazeCell : MonoBehaviour
 {
     public IntVector2 coordinates;
-    // Start is called before the first frame update
-    //void Start()
-    //{
-
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+   
     private MazeCellEdge[] edges = new MazeCellEdge[MazeDirections.Count];
 
     //retrieves an edge from the mazeCell

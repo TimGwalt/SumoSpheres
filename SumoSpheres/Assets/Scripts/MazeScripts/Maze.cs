@@ -12,17 +12,7 @@ public class Maze : MonoBehaviour
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
    
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-       
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+   
 
     //Does the first step in generating a maze cell
     private void DoFirstGenerationStep(List<MazeCell> activeCells)
@@ -39,12 +29,25 @@ public class Maze : MonoBehaviour
         MazeCell currentCell = activeCells[currentIndex];
         MazeDirection direction = MazeDirections.RandomValue;
         IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
-        if (ContainsCoordinates(coordinates) && GetCell(coordinates) == null)
+        if (ContainsCoordinates(coordinates))
         {
-            activeCells.Add(CreateCell(coordinates));
+            MazeCell neighbor = GetCell(coordinates);
+            if(neighbor == null)
+            {
+                neighbor = CreateCell(coordinates);
+                CreatePassage(currentCell, neighbor, direction);
+                activeCells.Add(neighbor);
+            }
+            else
+            {
+                CreateWall(currentCell, neighbor, direction);
+                activeCells.RemoveAt(currentIndex);
+            }
+
         }
         else
         {
+            CreateWall(currentCell, null, direction);
             activeCells.RemoveAt(currentIndex);
         }
     }
@@ -56,8 +59,9 @@ public class Maze : MonoBehaviour
         return cells[coordinates.x, coordinates.z];
     }
 
-    //generate method to construct the contents of the maze
+
     public float generationStepDelay;
+    //generate method to construct the contents of the maze
     public IEnumerator Generate()
     {
         WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
@@ -99,5 +103,28 @@ public class Maze : MonoBehaviour
         return coordinate.x >= 0 && coordinate.x < size.x && coordinate.z >= 0 && coordinate.z < size.z;
 
     }
+
+    //CreatePassage instantiates a Passage game object
+    private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        MazePassage passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(cell, otherCell, direction);
+        passage = Instantiate(passagePrefab) as MazePassage;
+        passage.Initialize(otherCell, cell, direction.GetOpposite());
+
+    }
+
+    //CreateWall instantiates a Wall object
+    private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
+    {
+        MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        wall.Initialize(cell, otherCell, direction);
+        if(otherCell != null)
+        {
+            wall = Instantiate(wallPrefab) as MazeWall;
+            wall.Initialize(otherCell, cell, direction.GetOpposite());
+        }
+    }
+
 
 }

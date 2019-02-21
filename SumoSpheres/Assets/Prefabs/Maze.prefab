@@ -46,7 +46,8 @@ MonoBehaviour:
   size:
     x: 20
     z: 20
-  cellPrefab: {fileID: 0}
+  cellPrefab: {fileID: 4975459588193468644, guid: 71729fa4e78a144cab22ae81d2c526c3,
+    type: 3}
   passagePrefab: {fileID: 1211578256384956674, guid: 68f2debac57e34334a850f542e497f96,
     type: 3}
   wallPrefab: {fileID: 5775099728276986211, guid: 9691dee83d8c647f9a92b45dc69438e8,
