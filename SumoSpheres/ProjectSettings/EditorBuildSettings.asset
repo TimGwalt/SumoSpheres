@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Test Scenes/Jayden_Test.unity
-    guid: dd4bca7f115b14d7d8d79691d8d8b674
+    path: Assets/Scenes/Development Scenes/StartMenu.unity
+    guid: 53403a2ebf1b8b9418ed1a913961e8a0
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Game.unity
+    guid: 621d6ec30c30849d7ae341c96c1a8780
   m_configObjects: {}
