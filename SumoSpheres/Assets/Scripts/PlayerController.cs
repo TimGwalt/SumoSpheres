@@ -28,8 +28,6 @@ public class PlayerController : NetworkBehaviour
             }
         }
 
-        //Hide canvas at the start
-        canvas.gameObject.SetActive(false);
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -95,17 +93,18 @@ public class PlayerController : NetworkBehaviour
     {
         if (Input.GetKeyDown("escape"))
         {
-            if (canvas.gameObject.activeSelf)
+            if (canvas.enabled)
             {
-                canvas.gameObject.SetActive(false);
+                canvas.enabled = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
-                canvas.gameObject.SetActive(true);
+                canvas.enabled = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+
             }
         }
     }
