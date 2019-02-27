@@ -74,9 +74,8 @@ public class CharacterList : MonoBehaviour
     {
         PlayerPrefs.SetInt("CharacterSelected", index);
         Debug.Log("You've picked character:" + index);
-        SceneManager.LoadScene("Tim_Test");
-        NetworkManager.singleton.GetComponent<NetworkController>().curPlayer = index;
-        characterList[index].SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        characterList[index].SetActive(true);
     }
     // Update is called once per frame
     void Update()
