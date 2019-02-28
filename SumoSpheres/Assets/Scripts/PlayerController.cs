@@ -14,7 +14,10 @@ public class PlayerController : NetworkBehaviour
     private SphereCollider playerCollider;
     Transform cameraTransform;
     public Canvas canvas;
-    public Text text;
+    public Text livesText;
+    public Text playerCounterText;
+    [SyncVar]
+    public int playersConnected;
 
     public override void OnStartLocalPlayer()
     {
@@ -36,14 +39,26 @@ public class PlayerController : NetworkBehaviour
         if (tempObject != null)
         {
             //If object found , get the Canvas component from it.
-            text = tempObject.GetComponent<Text>();
-            if (text == null)
+            livesText = tempObject.GetComponent<Text>();
+            if (livesText == null)
             {
                 Debug.Log("Could not locate Text component on " + tempObject.name);
             }
         }
-
-        text.text = "Lives: " + lives;
+        livesText.text = "Lives: " + lives;
+        
+        //Find the player counter object
+        tempObject = GameObject.Find("Player Count");
+        if (tempObject != null)
+        {
+            //If object found , get the Canvas component from it.
+            playerCounterText = tempObject.GetComponent<Text>();
+            if (playerCounterText == null)
+            {
+                Debug.Log("Could not locate Text component on " + tempObject.name);
+            }
+        }
+        CountPlayers();
 
 
 
@@ -84,6 +99,7 @@ public class PlayerController : NetworkBehaviour
             }
 
             ScanForEscape();
+            CountPlayers();
         }
     }
 
@@ -94,7 +110,7 @@ public class PlayerController : NetworkBehaviour
     
     public void die(){
         lives --;
-        text.text = "Lives: " + lives;
+        livesText.text = "Lives: " + lives;
         if (lives > 0)
         {
             gameObject.transform.position = new Vector3(1f, 10f, 1f);
@@ -126,5 +142,23 @@ public class PlayerController : NetworkBehaviour
 
             }
         }
+    }
+
+    private void CountPlayers()
+    {
+        if (isServer)
+        {
+            int count = 0;
+            foreach (NetworkConnection con in NetworkServer.connections)
+            {
+                if (con != null)
+                    count++;
+            }
+
+            playersConnected = count;
+        }
+        playerCounterText.text = "Enemies Remaining: " + (playersConnected - 1);
+
+        
     }
 }
