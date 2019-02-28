@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : NetworkBehaviour
     private SphereCollider playerCollider;
     Transform cameraTransform;
     public Canvas canvas;
+    public Text text;
 
     public override void OnStartLocalPlayer()
     {
@@ -27,6 +29,22 @@ public class PlayerController : NetworkBehaviour
                 Debug.Log("Could not locate Canvas component on " + tempObject.name);
             }
         }
+
+
+        //Find the life counter object
+        tempObject = GameObject.Find("Life Counter");
+        if (tempObject != null)
+        {
+            //If object found , get the Canvas component from it.
+            text = tempObject.GetComponent<Text>();
+            if (text == null)
+            {
+                Debug.Log("Could not locate Text component on " + tempObject.name);
+            }
+        }
+
+        text.text = "Lives: " + lives;
+
 
 
         Cursor.visible = false;
@@ -76,6 +94,7 @@ public class PlayerController : NetworkBehaviour
     
     public void die(){
         lives --;
+        text.text = "Lives: " + lives;
         if (lives > 0)
         {
             gameObject.transform.position = new Vector3(1f, 10f, 1f);
