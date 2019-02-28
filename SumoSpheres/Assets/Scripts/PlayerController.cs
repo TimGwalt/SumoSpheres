@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -14,8 +15,8 @@ public class PlayerController : NetworkBehaviour
     private SphereCollider playerCollider;
     Transform cameraTransform;
     public Canvas canvas;
-    public Text livesText;
-    public Text playerCounterText;
+    public TextMeshProUGUI livesText;
+    public TextMeshProUGUI playerCounterText;
     [SyncVar]
     public int playersConnected;
 
@@ -39,7 +40,7 @@ public class PlayerController : NetworkBehaviour
         if (tempObject != null)
         {
             //If object found , get the Canvas component from it.
-            livesText = tempObject.GetComponent<Text>();
+            livesText = tempObject.GetComponent<TextMeshProUGUI>();
             if (livesText == null)
             {
                 Debug.Log("Could not locate Text component on " + tempObject.name);
@@ -52,7 +53,7 @@ public class PlayerController : NetworkBehaviour
         if (tempObject != null)
         {
             //If object found , get the Canvas component from it.
-            playerCounterText = tempObject.GetComponent<Text>();
+            playerCounterText = tempObject.GetComponent<TextMeshProUGUI>();
             if (playerCounterText == null)
             {
                 Debug.Log("Could not locate Text component on " + tempObject.name);
