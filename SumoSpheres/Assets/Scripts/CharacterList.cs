@@ -7,7 +7,6 @@ using UnityEngine.Networking;
 public class CharacterList : NetworkBehaviour
 {
     public static GameObject[] characterList;
-    [SyncVar]
     public static int index;
     public static int testInt;
 

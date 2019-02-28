@@ -48,7 +48,6 @@ public class NetworkController : NetworkManager
          if (extraMessageReader != null) {
              var stream = extraMessageReader.ReadMessage<IntegerMessage> ();
              curPlayer = CharacterList.testInt;
-             print("curPlayer is " + curPlayer);
          }
          //Select the prefab from the spawnable objects list
          var playerPrefab = spawnPrefabs[curPlayer];       
