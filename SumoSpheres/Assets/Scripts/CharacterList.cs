@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 
-public class CharacterList : MonoBehaviour
+public class CharacterList : NetworkBehaviour
 {
     public static GameObject[] characterList;
+    [SyncVar]
     public static int index;
+    public static int testInt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,7 @@ public class CharacterList : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             characterList[i] = transform.GetChild(i).gameObject;
+            Debug.Log(transform.childCount);
         }
 
         foreach(GameObject go in characterList)
@@ -75,6 +79,7 @@ public class CharacterList : MonoBehaviour
         PlayerPrefs.SetInt("CharacterSelected", index);
         Debug.Log("You've picked character:" + index);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        testInt = index;
         characterList[index].SetActive(true);
     }
     // Update is called once per frame

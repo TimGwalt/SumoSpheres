@@ -8,43 +8,33 @@ public class NetworkController : NetworkManager
     //One spawn point
     public NetworkStartPosition[] List;
     public static Transform spawnPosition;
-    public static GameObject[] characterList;
+    public int numberOfChars = 5;
+    public GameObject[] characterList;
+    public string resourcePath;
 
-    //subclass for sending network messages
-    public class NetworkMessage : MessageBase
-    {
-        public int chosenChar;
-    }
+    GameObject prefab;
     
-
     //index of cur player from the character selection
-    public int curPlayer;
-    
+    public static int curPlayer;
+
+
 
     //Runs at the begining of every call.
     private void Start()
     {
 
         //Make Array for childCount amount of characters
-        characterList = new GameObject[transform.childCount];
-
-        //Fill characterList array with child at their childCount
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            characterList[i] = transform.GetChild(i).gameObject;
-        }
+        characterList = new GameObject[numberOfChars];
 
         //Debug for initial value.
         //Intializeze the first spawn point.
         spawnPosition = List[0].transform;
-        Debug.Log("index is: " + curPlayer + " coming into network");
     }
 
 
     //Called on client when connect
     public override void OnClientConnect(NetworkConnection conn)
     {
-
         // Create message to set the player
         IntegerMessage msg = new IntegerMessage(curPlayer);
 
@@ -53,31 +43,22 @@ public class NetworkController : NetworkManager
     }
 
     //Adding the player to the server.
-    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader)
-    {
-        NetworkMessage message = extraMessageReader.ReadMessage<NetworkMessage>();
-        curPlayer = message.chosenChar;
-        Debug.Log(curPlayer);
-
-
-        //Select the prefab from the spawnable objects list
-        var playerPrefab = characterList[curPlayer + 1];
-
-        //get spawnposition.
-        spawnPosition = UpdateSpawnPosition(spawnPosition);
-        Debug.Log("Spawning at : " + spawnPosition);
-
-        // Create player object with prefab
-        GameObject player = Instantiate(playerPrefab,spawnPosition) as GameObject;
-
-        //To make sure the correct player is being added
-        Debug.Log("character deployed as player" + curPlayer);
-
-        // Add player object for connection
-        NetworkServer.AddPlayerForConnection(conn, characterList[curPlayer], playerControllerId);
-
-    }
-
+     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader ) { 
+         // Read client message and receive index
+         if (extraMessageReader != null) {
+             var stream = extraMessageReader.ReadMessage<IntegerMessage> ();
+             curPlayer = CharacterList.testInt;
+             print("curPlayer is " + curPlayer);
+         }
+         //Select the prefab from the spawnable objects list
+         var playerPrefab = spawnPrefabs[curPlayer];       
+  
+         // Create player object with prefab
+         var player = Instantiate(playerPrefab, spawnPosition.position, Quaternion.identity) as GameObject;        
+         
+         // Add player object for connection
+         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
+     }
     private Transform UpdateSpawnPosition(Transform spawn)
     {
         if (this.playerSpawnMethod == PlayerSpawnMethod.Random)
