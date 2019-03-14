@@ -93,7 +93,15 @@ public class BasePlayerController : NetworkBehaviour
     {
         if (Input.GetKeyDown("escape"))
         {
-            if (canvas.enabled)
+            if(Cursor.visible)
+            {
+                Cursor.visible = false;
+            }
+            else
+            {
+                Cursor.visible = true;
+            }
+            /* if (canvas.enabled)
             {
                 canvas.enabled = false;
                 Cursor.visible = false;
@@ -102,10 +110,9 @@ public class BasePlayerController : NetworkBehaviour
             else
             {
                 canvas.enabled = true;
-                Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
 
-            }
+            } */
         }
     }
 }

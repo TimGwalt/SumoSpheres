@@ -179,4 +179,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpSpeed: 2
+  jumpSpeed: 1
+  canvas: {fileID: 0}
