@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class BasePlayerController : NetworkBehaviour
 {
@@ -13,6 +14,10 @@ public class BasePlayerController : NetworkBehaviour
     private SphereCollider playerCollider;
     Transform cameraTransform;
     public Canvas canvas;
+
+    public static Prototype.NetworkLobby.LobbyTopPanel topPanel;
+
+    public bool paused = false;
 
     public override void OnStartLocalPlayer()
     {
@@ -59,10 +64,12 @@ public class BasePlayerController : NetworkBehaviour
             }
             if(inputDirection != Vector2.zero)
             {
+
                 // Add force to the player dependent on input axes and camera direction.
                 Vector3 movement = new Vector3(input.x, 0.0f, input.y);
                 Vector3 actualMovement = cameraTransform.TransformDirection(movement);
                 playerRB.AddForce(actualMovement * speed);
+               
             }
 
             ScanForEscape();
@@ -84,6 +91,8 @@ public class BasePlayerController : NetworkBehaviour
         else
         {
             Destroy(gameObject);
+            NetworkManager.singleton.StopClient();
+            SceneManager.LoadScene("MainMenu");
             //display message/menu
             //update other clients
         }
@@ -96,10 +105,12 @@ public class BasePlayerController : NetworkBehaviour
             if(Cursor.visible)
             {
                 Cursor.visible = false;
+                paused = false;
             }
             else
             {
                 Cursor.visible = true;
+                paused = true;
             }
             /* if (canvas.enabled)
             {
