@@ -93,6 +93,7 @@ public class BasePlayerController : NetworkBehaviour
             Destroy(gameObject);
             NetworkManager.singleton.StopClient();
             SceneManager.LoadScene("MainMenu");
+            Cursor.visible = true;
             //display message/menu
             //update other clients
         }

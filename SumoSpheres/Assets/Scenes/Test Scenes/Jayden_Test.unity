@@ -1210,7 +1210,7 @@ MonoBehaviour:
   sensitivity: 10
   offset: 3
   smoothFactor: 0.12
-  pitchBounds: {x: -10, y: 85}
+  pitchBounds: {x: -5, y: 85}
 --- !u!81 &419438762
 AudioListener:
   m_ObjectHideFlags: 0
