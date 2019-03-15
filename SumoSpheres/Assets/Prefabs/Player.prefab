@@ -195,3 +195,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1912269700849468}
+  coolDown: 4.96
