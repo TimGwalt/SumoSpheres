@@ -13,9 +13,11 @@ public class ShadowCloneJutsu : MonoBehaviour
     {
         if (Input.GetKeyDown("c") & timeStamp <= Time.time )
         {
+            Debug.Log("kage bushin no justu");
             PlayerClone = Instantiate(player, transform.position, Quaternion.identity) as GameObject;
-            //Destroy(PlayerClone, 10);
+            Destroy(PlayerClone, 3);
             timeStamp = Time.time + coolDown;
         }
     }
+
 }
