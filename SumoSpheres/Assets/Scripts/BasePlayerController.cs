@@ -41,7 +41,7 @@ public class BasePlayerController : NetworkBehaviour
         // to cyan.
         playerRB = GetComponent<Rigidbody>();
         playerCollider = GetComponent<SphereCollider>();
-        GetComponent<MeshRenderer>().material.color = Color.cyan;
+        // GetComponent<MeshRenderer>().material.color = Color.cyan;
 
         // Set the main camera's target to the player's transform and get a reference to the main
         // camera's transform.
