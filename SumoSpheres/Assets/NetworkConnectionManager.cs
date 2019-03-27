@@ -17,6 +17,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         m_AttemptConnectToMaster = false;
         m_AttemptConnectToRoom = false;
     }
@@ -24,15 +25,21 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        m_ButtonConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !m_AttemptConnectToMaster);
-        m_ButtonConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !m_AttemptConnectToMaster && !m_AttemptConnectToRoom);
+        if (m_ButtonConnectMaster != null)
+        {
+            m_ButtonConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !m_AttemptConnectToMaster);
+        }
+        if (m_ButtonConnectRoom != null)
+        {
+            m_ButtonConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !m_AttemptConnectToMaster && !m_AttemptConnectToRoom);
+        }
     }
 
     public void OnClickConnectToMaster()
     {
         PhotonNetwork.OfflineMode = false;
         PhotonNetwork.NickName = "PlayerName";
-        PhotonNetwork.AutomaticallySyncScene = true;
+        // PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = "v1";
 
         m_AttemptConnectToMaster = true;
