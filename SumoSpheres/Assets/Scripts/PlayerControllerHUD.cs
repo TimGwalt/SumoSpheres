@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class BasePlayerController : NetworkBehaviour
+public class PlayerControllerHUD : NetworkBehaviour
 {
     public float speed;
     public float jumpSpeed;
