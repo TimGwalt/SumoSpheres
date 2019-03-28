@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,10 @@ public class BasePlayerController : NetworkBehaviour
     private SphereCollider playerCollider;
     Transform cameraTransform;
     public Canvas canvas;
+    public TextMeshProUGUI livesText;
+    public TextMeshProUGUI playerCounterText;
+    [SyncVar]
+    public int playersConnected;   
 
     public static Prototype.NetworkLobby.LobbyTopPanel topPanel;
 
@@ -32,6 +37,33 @@ public class BasePlayerController : NetworkBehaviour
                 Debug.Log("Could not locate Canvas component on " + tempObject.name);
             }
         }
+
+
+        //Find the life counter object
+        tempObject = GameObject.Find("Life Counter");
+        if (tempObject != null)
+        {
+            //If object found , get the Canvas component from it.
+            livesText = tempObject.GetComponent<TextMeshProUGUI>();
+            if (livesText == null)
+            {
+                Debug.Log("Could not locate Text component on " + tempObject.name);
+            }
+        }
+        livesText.text = "Lives: " + lives;
+                
+        //Find the player counter object
+        tempObject = GameObject.Find("Player Count");
+        if (tempObject != null)
+        {
+            //If object found , get the Canvas component from it.
+            playerCounterText = tempObject.GetComponent<TextMeshProUGUI>();
+            if (playerCounterText == null)
+            {
+                Debug.Log("Could not locate Text component on " + tempObject.name);
+            }
+        }
+        CountPlayers();
 
 
         Cursor.visible = false;
@@ -73,6 +105,7 @@ public class BasePlayerController : NetworkBehaviour
             }
 
             ScanForEscape();
+            CountPlayers();
         }
     }
 
@@ -83,6 +116,8 @@ public class BasePlayerController : NetworkBehaviour
     
     public void die(){
         lives --;
+        livesText.text = "Lives: " + lives;
+
         if (lives > 0)
         {
             gameObject.transform.position = new Vector3(1f, 10f, 1f);
@@ -126,5 +161,21 @@ public class BasePlayerController : NetworkBehaviour
 
             } */
         }
+    }
+
+    private void CountPlayers()
+    {
+        if (isServer)
+        {
+            int count = 0;
+            foreach (NetworkConnection con in NetworkServer.connections)
+            {
+                if (con != null)
+                count++;
+            }
+            
+            playersConnected = count;
+        }
+        playerCounterText.text = "Enemies Remaining: " + (playersConnected - 1);        
     }
 }
