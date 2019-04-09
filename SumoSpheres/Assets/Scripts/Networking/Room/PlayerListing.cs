@@ -14,6 +14,7 @@ public class PlayerListing : MonoBehaviour
     
     public void ApplyPhotonPlayer(Player player)
     {
+        m_Player = player;
         PlayerName.text = player.NickName;
     }
 }

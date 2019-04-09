@@ -20,8 +20,18 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         get { return m_playerListings; }
     }
 
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        print("Master client switched!");
+    }
+
     public override void OnJoinedRoom()
     {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         Player[] players = PhotonNetwork.PlayerList;
         for (int i = 0; i < players.Length; i++)
         {
