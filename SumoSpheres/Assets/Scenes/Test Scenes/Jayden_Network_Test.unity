@@ -565,6 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 13665135}
   - component: {fileID: 13665136}
+  - component: {fileID: 13665137}
   m_Layer: 0
   m_Name: PlayerNetwork
   m_TagString: Untagged
@@ -598,6 +599,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f1d51de03da400884422253cf6d320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &13665137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13665134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 999
+  InstantiationId: 999
+  isRuntimeInstantiated: 0
 --- !u!1 &41455299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,12 +1490,12 @@ PrefabInstance:
     - target: {fileID: 8985785855481760463, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 571
       objectReference: {fileID: 0}
     - target: {fileID: 8985785855481760463, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -393.8
       objectReference: {fileID: 0}
     - target: {fileID: 8985785855481760463, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
@@ -1492,7 +1515,7 @@ PrefabInstance:
     - target: {fileID: 8985785855481760463, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985785855481760463, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
@@ -1502,7 +1525,7 @@ PrefabInstance:
     - target: {fileID: 8985785855481760463, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985785855481760463, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
@@ -2120,12 +2143,12 @@ PrefabInstance:
     - target: {fileID: 8985785855481760461, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985785855481760461, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985785855481760461, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
@@ -2136,11 +2159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1252515866}
+      objectReference: {fileID: 1557849552}
     - target: {fileID: 8985785855481760461, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: OnClickStartGame
       objectReference: {fileID: 0}
     - target: {fileID: 8985785855481760461, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
@@ -2180,6 +2203,11 @@ PrefabInstance:
     - target: {fileID: 8985785855481760461, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
         type: 3}
       propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985785855481760461, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985785854478128732, guid: 5e07cc4cc3d70f94b8aaf152d8779354,
@@ -2451,7 +2479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00028555654, y: 0.00009684579}
+  m_AnchoredPosition: {x: -0.00017545251, y: 0.00006265013}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &771295238
@@ -3708,7 +3736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012764345, y: 0.00008840176}
+  m_AnchoredPosition: {x: -0.000075586155, y: -0.000028788658}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1296296471

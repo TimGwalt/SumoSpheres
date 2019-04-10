@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class LobbyNetwork : MonoBehaviourPunCallbacks
 {
@@ -14,11 +15,12 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         print("Connected to master.");
+        PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.NickName = PlayerNetwork.m_Instance.m_Name;
-
-        PhotonNetwork.JoinLobby(Photon.Realtime.TypedLobby.Default);
+        PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
+    // TODO: Move UI canvas logic to this function
     public override void OnJoinedLobby()
     {
         print("Joined master lobby.");
