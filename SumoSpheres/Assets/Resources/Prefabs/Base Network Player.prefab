@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9094143728710115298}
   - component: {fileID: 3309719969552621828}
   - component: {fileID: 7744050854632052278}
+  - component: {fileID: 1218229145684032403}
   m_Layer: 0
   m_Name: Base Network Player
   m_TagString: Player
@@ -130,6 +131,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 7744050854632052278}
+  - {fileID: 1218229145684032403}
   viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
@@ -163,3 +165,19 @@ MonoBehaviour:
   m_MoveSpeed: 2
   m_RotateSpeed: 1
   m_JumpSpeed: 0.5
+--- !u!114 &1218229145684032403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690203883971594437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
