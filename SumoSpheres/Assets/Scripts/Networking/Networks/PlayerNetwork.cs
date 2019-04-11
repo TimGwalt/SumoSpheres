@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using System.IO;
 
 public class PlayerNetwork : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerNetwork : MonoBehaviour
         m_Instance = this;
         m_PhotonView = GetComponent<PhotonView>();
         m_Name = "Player#" + Random.Range(1000, 9999);
+
+        PhotonNetwork.SendRate = 60;
+        PhotonNetwork.SerializationRate = 30;
 
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
@@ -53,6 +57,14 @@ public class PlayerNetwork : MonoBehaviour
         if (m_PlayersInGame == PhotonNetwork.PlayerList.Length)
         {
             Debug.Log("All players have loaded the game!");
+            m_PhotonView.RPC("RPC_CreatePlayer", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    private void RPC_CreatePlayer()
+    {
+        float randomHeight = Random.Range(1.5f, 7f);
+        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Base Network Player"), Vector3.up * randomHeight, Quaternion.identity, 0);
     }
 }
