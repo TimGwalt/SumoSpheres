@@ -32,5 +32,6 @@ MonoBehaviour:
   - RPC_LoadedGameScene
   - RPC_LoadGameOthers
   - RPC_CreatePlayer
+  - RPC_NewLives
   DisableAutoOpenWizard: 1
   ShowSettings: 1

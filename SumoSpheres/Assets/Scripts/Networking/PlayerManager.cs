@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour
         int index = m_PlayerStats.FindIndex(x => x.m_Player == player);
         if (index == -1)
         {
-            m_PlayerStats.Add(new PlayerStats(player, 30));
+            m_PlayerStats.Add(new PlayerStats(player, 3));
         }
     }
 
@@ -42,7 +42,7 @@ public class PlayerStats
     public PlayerStats(Player player, int lives)
     {
         m_Player = player;
-        m_Lives = lives
+        m_Lives = lives;
     }
 
     public readonly Player m_Player;

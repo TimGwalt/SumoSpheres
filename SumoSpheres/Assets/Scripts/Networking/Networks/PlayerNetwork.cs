@@ -79,6 +79,8 @@ public class PlayerNetwork : MonoBehaviour
         
         if (lives <= 0)
             PhotonNetwork.Destroy(m_CurrentPlayerMovement.gameObject);
+        else
+            m_CurrentPlayerMovement.m_Lives = lives;
     }
 
     [PunRPC]
