@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Photon.Realtime;
 using System.IO;
 
 public class PlayerNetwork : MonoBehaviour
 {
     public static PlayerNetwork m_Instance;
     public string m_Name {get; private set;}
+
     private PhotonView m_PhotonView;
     private int m_PlayersInGame = 0;
+    private NetworkBasePlayerMovement m_CurrentPlayerMovement;
 
     void Awake()
     {
@@ -35,13 +38,13 @@ public class PlayerNetwork : MonoBehaviour
 
     private void MasterLoadedGame()
     {
-        m_PhotonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient);
+        m_PhotonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
         m_PhotonView.RPC("RPC_LoadGameOthers", RpcTarget.Others);
     }
 
     private void NonMasterLoadedGame()
     {
-        m_PhotonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient);
+        m_PhotonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
     }
 
     [PunRPC]
@@ -51,9 +54,11 @@ public class PlayerNetwork : MonoBehaviour
     }
 
     [PunRPC]
-    private void RPC_LoadedGameScene()
+    private void RPC_LoadedGameScene(Player player)
     {
+        PlayerManager.m_Instance.AddPlayerStats(player);
         m_PlayersInGame++;
+
         if (m_PlayersInGame == PhotonNetwork.PlayerList.Length)
         {
             Debug.Log("All players have loaded the game!");
@@ -61,10 +66,26 @@ public class PlayerNetwork : MonoBehaviour
         }
     }
 
+    public void NewLives(Player player, int lives)
+    {
+        m_PhotonView.RPC("RPC_NewLives", player, lives);
+    }
+
+    [PunRPC]
+    private void RPC_NewLives(int lives)
+    {
+        if (m_CurrentPlayerMovement == null)
+            return;
+        
+        if (lives <= 0)
+            PhotonNetwork.Destroy(m_CurrentPlayerMovement.gameObject);
+    }
+
     [PunRPC]
     private void RPC_CreatePlayer()
     {
         float randomHeight = Random.Range(1.5f, 7f);
-        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Base Network Player"), Vector3.up * randomHeight, Quaternion.identity, 0);
+        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Base Network Player"), Vector3.up * randomHeight, Quaternion.identity, 0);
+        m_CurrentPlayerMovement = gameObject.GetComponent<NetworkBasePlayerMovement>();
     }
 }
