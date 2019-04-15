@@ -10,14 +10,23 @@ public class PlayerNetwork : MonoBehaviour
     private PhotonView m_PhotonView;
     private int m_PlayersInGame = 0;
 
+    public static string playerChoice;
+    public static bool charSelect = false;
+
+
+    public static bool getCharSelect() {
+        return charSelect;
+    }
+    
     void Awake()
     {
         m_Instance = this;
         m_PhotonView = GetComponent<PhotonView>();
-        m_Name = "Player#" + Random.Range(1000, 9999);
+        m_Name = "Player#" + Random.Range(1,5);
 
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
+
 
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
@@ -64,7 +73,18 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_CreatePlayer()
     {
+        if(charSelect != true) {
+            int randomNum = Random.Range(1,5);
+            Debug.Log(randomNum);
+            playerChoice = "Player " + randomNum;
+        }
+        else {
+            playerChoice = "Player " + (1 + CharacterList.getIndex());
+            Debug.Log(playerChoice);
+        }
+
+        
         float randomHeight = Random.Range(1.5f, 7f);
-        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Base Network Player"), Vector3.up * randomHeight, Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(Path.Combine("Prefabs", playerChoice), Vector3.up * randomHeight, Quaternion.identity, 0);
     }
 }
