@@ -6,7 +6,7 @@ public class DeathTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider c){
         if(c.tag == "Player"){
-            var player = c.GetComponent<PlayerController>();
+            var player = c.GetComponent<BasePlayerController>();
             player.die();
         }
     }
