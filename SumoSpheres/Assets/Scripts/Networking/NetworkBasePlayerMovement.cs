@@ -8,7 +8,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
     public float m_JumpSpeed = 2f;
     private Rigidbody m_PlayerRB;
     private SphereCollider m_PlayerCollider;
-    private Transform m_CameraTransform;
+    public Transform m_CameraTransform;
     private float m_DistanceToGround;
     private Vector3 TargetPosition;
     private Quaternion TargetRotation;
