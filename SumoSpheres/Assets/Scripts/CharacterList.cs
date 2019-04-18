@@ -86,4 +86,11 @@ public class CharacterList : NetworkBehaviour
     {
         
     }
+
+
+    // Returns the value of the index variable
+    public static int getIndex() {
+        return index;
+    }
+
 }
