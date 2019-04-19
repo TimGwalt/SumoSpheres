@@ -8,8 +8,11 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
 {
     void Start()
     {
-        print("Connecting to server...");
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected)
+        {
+            print("Connecting to server...");
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     public override void OnConnectedToMaster()

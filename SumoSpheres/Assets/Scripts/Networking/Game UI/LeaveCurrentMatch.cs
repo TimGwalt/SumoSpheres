@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class LeaveCurrentMatch : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnClickLeaveMatch()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(0); 
+        Destroy(GameObject.Find("DDOL"));
     }
 }

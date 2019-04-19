@@ -243,6 +243,7 @@ MonoBehaviour:
   m_MoveSpeed: 2
   m_RotateSpeed: 1
   m_JumpSpeed: 2
+  m_Lives: 0
 --- !u!114 &3600081689574426274
 MonoBehaviour:
   m_ObjectHideFlags: 0

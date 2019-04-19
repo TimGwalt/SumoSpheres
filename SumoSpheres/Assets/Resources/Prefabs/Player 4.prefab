@@ -259,3 +259,4 @@ MonoBehaviour:
   m_MoveSpeed: 2
   m_RotateSpeed: 1
   m_JumpSpeed: 2
+  m_Lives: 0
