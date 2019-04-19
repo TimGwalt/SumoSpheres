@@ -35,5 +35,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         print("Room joined successfully.");
+        this.gameObject.GetComponentInParent<Canvas>().enabled = false;
+        RoomCanvasManager.m_Instance.gameObject.GetComponent<Canvas>().enabled = true;
     }
 }
