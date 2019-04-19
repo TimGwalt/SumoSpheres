@@ -10,11 +10,6 @@ public class CurrentRoomCanvas : MonoBehaviour
         
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
-        if(PlayerNetwork.getCharSelect()) {
-            PhotonNetwork.LoadLevel(1);
-        }
-        else {
-            PhotonNetwork.LoadLevel(2);
-        }
+        PhotonNetwork.LoadLevel(1);
     }
 }

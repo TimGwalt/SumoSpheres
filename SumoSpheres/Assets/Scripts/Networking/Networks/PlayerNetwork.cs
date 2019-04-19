@@ -12,14 +12,6 @@ public class PlayerNetwork : MonoBehaviour
     private PhotonView m_PhotonView;
     private int m_PlayersInGame = 0;
     private NetworkBasePlayerMovement m_CurrentPlayerMovement;
-
-    public static string playerChoice;
-    public static bool charSelect = false;
-
-
-    public static bool getCharSelect() {
-        return charSelect;
-    }
     
     void Awake()
     {
@@ -94,22 +86,9 @@ public class PlayerNetwork : MonoBehaviour
 
     [PunRPC]
     private void RPC_CreatePlayer()
-    {
-        if(charSelect != true) {
-            int randomNum = Random.Range(1,5);
-            Debug.Log(randomNum);
-            playerChoice = "Player " + randomNum;
-        }
-        else {
-            playerChoice = "Player " + (1 + CharacterList.getIndex());
-            Debug.Log(playerChoice);
-        }
-
-        
+    {        
         float randomHeight = Random.Range(1.5f, 7f);
-        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", playerChoice), Vector3.up * randomHeight, Quaternion.identity, 0);
-        // GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Base Network Player"), Vector3.up * randomHeight, Quaternion.identity, 0);
+        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Base Network Player"), Vector3.up * randomHeight, Quaternion.identity, 0);
         m_CurrentPlayerMovement = gameObject.GetComponent<NetworkBasePlayerMovement>();
-        // PhotonNetwork.Instantiate(Path.Combine("Prefabs", playerChoice), Vector3.up * randomHeight, Quaternion.identity, 0);
     }
 }
