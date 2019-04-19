@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8815184553244797902}
   - component: {fileID: 4546090885472682944}
   - component: {fileID: 5170481245458325271}
+  - component: {fileID: 6924686306227907753}
   m_Layer: 0
   m_Name: Player 5
   m_TagString: Player
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_MoveSpeed: 2
   m_RotateSpeed: 1
   m_JumpSpeed: 2
+  m_Lives: 0
 --- !u!114 &8815184553244797902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +184,18 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &6924686306227907753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392613941533509356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cab0f5cfec67b2409804305d1a9f7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6853584867227370547
 GameObject:
   m_ObjectHideFlags: 0

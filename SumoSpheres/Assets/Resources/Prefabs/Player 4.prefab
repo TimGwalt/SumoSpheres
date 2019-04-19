@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 7201819912220354956}
   - component: {fileID: 5282723138018732510}
   - component: {fileID: 460264851919470429}
+  - component: {fileID: 4334359453134101624}
   m_Layer: 0
   m_Name: Player 4
   m_TagString: Player
@@ -260,3 +261,15 @@ MonoBehaviour:
   m_RotateSpeed: 1
   m_JumpSpeed: 2
   m_Lives: 0
+--- !u!114 &4334359453134101624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842962036101894399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cab0f5cfec67b2409804305d1a9f7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
