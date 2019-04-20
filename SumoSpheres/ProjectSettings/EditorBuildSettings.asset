@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Scenes/Jayden_Network_Test.unity
     guid: 9d09cc19b0ddd4f15a7850c3da84efc9
   - enabled: 1
-    path: Assets/Scenes/Development Scenes/Character Selection.unity
-    guid: 5e5618c43363a1f459778fdd65a6b249
+    path: Assets/Scenes/Test Scenes/Jayden_Character_Test.unity
+    guid: d7016d849e9409e41a8a88f1a2d2dc03
   - enabled: 1
     path: Assets/Scenes/Test Scenes/Jayden_Test.unity
     guid: dd4bca7f115b14d7d8d79691d8d8b674

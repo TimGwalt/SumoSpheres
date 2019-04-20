@@ -16,6 +16,21 @@ public class PlayerManager : MonoBehaviour
         m_PhotonView = GetComponent<PhotonView>();
     }
 
+    // Todo: Perhaps make this return an error instead of recurse
+    public PlayerStats GetPlayerStats(Player player)
+    {
+        int index = m_PlayerStats.FindIndex(x => x.m_Player == player);
+        if (index != -1)
+        {
+            return m_PlayerStats[index];
+        }
+        else
+        {
+            AddPlayerStats(player);
+            return GetPlayerStats(player);
+        }
+    }
+
     public void AddPlayerStats(Player player)
     {
         int index = m_PlayerStats.FindIndex(x => x.m_Player == player);
@@ -47,4 +62,5 @@ public class PlayerStats
 
     public readonly Player m_Player;
     public int m_Lives;
+    public string m_SumoName;
 }

@@ -11,6 +11,7 @@ public class PlayerNetwork : MonoBehaviour
 
     private PhotonView m_PhotonView;
     private int m_PlayersInGame = 0;
+    private int m_PlayersInSumoSelect = 0;
     private NetworkBasePlayerMovement m_CurrentPlayerMovement;
     
     void Awake()
@@ -28,43 +29,69 @@ public class PlayerNetwork : MonoBehaviour
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Jayden_Test")
+        if (scene.name == "Jayden_Character_Test")
         {
             if (PhotonNetwork.IsMasterClient)
-                MasterLoadedGame();
+                MasterLoadedSumoSelect();
             else
-                NonMasterLoadedGame();
+                NonMasterLoadedSumoSelect();
+        }
+        else if (scene.name == "Jayden_Test")
+        {
+            LoadedGame();
+            // m_PhotonView.RPC("RPC_CreatePlayer", RpcTarget.All);
         }
     }
 
-    private void MasterLoadedGame()
+    private void MasterLoadedSumoSelect()
     {
-        m_PhotonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
-        m_PhotonView.RPC("RPC_LoadGameOthers", RpcTarget.Others);
+        m_PhotonView.RPC("RPC_LoadedSumoSelectScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
+        m_PhotonView.RPC("RPC_LoadSumoSelectOthers", RpcTarget.Others);
     }
 
-    private void NonMasterLoadedGame()
+    private void NonMasterLoadedSumoSelect()
+    {
+        m_PhotonView.RPC("RPC_LoadedSumoSelectScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
+    }
+
+    private void LoadedGame()
     {
         m_PhotonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
     }
 
     [PunRPC]
-    private void RPC_LoadGameOthers()
+    private void RPC_LoadSumoSelectOthers()
     {
         PhotonNetwork.LoadLevel(1);
     }
 
     [PunRPC]
-    private void RPC_LoadedGameScene(Player player)
+    private void RPC_LoadedSumoSelectScene(Player player)
     {
         PlayerManager.m_Instance.AddPlayerStats(player);
+        m_PlayersInSumoSelect++;
+
+        if (m_PlayersInSumoSelect == PhotonNetwork.PlayerList.Length)
+        {
+            Debug.Log("All players have loaded sumo select!");
+        }
+    }
+
+    [PunRPC]
+    private void RPC_LoadedGameScene(Player player)
+    {
         m_PlayersInGame++;
 
         if (m_PlayersInGame == PhotonNetwork.PlayerList.Length)
         {
-            Debug.Log("All players have loaded the game!");
+            Debug.Log("All players have loaded game scene!");
             m_PhotonView.RPC("RPC_CreatePlayer", RpcTarget.All);
         }
+    }
+
+    private void RPC_LoadGameSceneOthers()
+    {
+        PhotonNetwork.LoadLevel(2);
     }
 
     public void NewLives(Player player, int lives)
@@ -88,7 +115,8 @@ public class PlayerNetwork : MonoBehaviour
     private void RPC_CreatePlayer()
     {        
         float randomHeight = Random.Range(1.5f, 7f);
-        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Base Network Player"), Vector3.up * randomHeight, Quaternion.identity, 0);
+        string sumoName = PlayerManager.m_Instance.GetPlayerStats(PhotonNetwork.LocalPlayer).m_SumoName;
+        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", sumoName), Vector3.up * randomHeight, Quaternion.identity, 0);
         m_CurrentPlayerMovement = gameObject.GetComponent<NetworkBasePlayerMovement>();
     }
 }

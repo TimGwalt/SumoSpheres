@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Presets;
+using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class SumoSelection : MonoBehaviour
 {
-    public Preset m_TransformPreset;
     private GameObject[] m_SumoArray;
     private int index;
 
@@ -35,8 +35,13 @@ public class SumoSelection : MonoBehaviour
             if (index < 0)
                 index = m_SumoArray.Length - 1;
         }
-        
-        m_TransformPreset.ApplyTo(m_SumoArray[index].GetComponent<Transform>());
         m_SumoArray[index].SetActive(true);
+    }
+
+    public void OnClickSelect()
+    {
+        PlayerStats localPlayerStats = PlayerManager.m_Instance.GetPlayerStats(PhotonNetwork.LocalPlayer);
+        localPlayerStats.m_SumoName = m_SumoArray[index].name;
+        SceneManager.LoadScene(2);
     }
 }
