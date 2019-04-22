@@ -113,10 +113,11 @@ public class PlayerNetwork : MonoBehaviour
 
     [PunRPC]
     private void RPC_CreatePlayer()
-    {        
-        float randomHeight = Random.Range(1.5f, 7f);
-        string sumoName = PlayerManager.m_Instance.GetPlayerStats(PhotonNetwork.LocalPlayer).m_SumoName;
-        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", sumoName), Vector3.up * randomHeight, Quaternion.identity, 0);
+    {
+        PlayerStats localPlayerStats = PlayerManager.m_Instance.GetPlayerStats(PhotonNetwork.LocalPlayer);
+        string sumoName = localPlayerStats.m_SumoName;
+        Vector3 sumoPosition = localPlayerStats.m_SpawnPoint;
+        GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", sumoName), sumoPosition, Quaternion.identity, 0);
         m_CurrentPlayerMovement = gameObject.GetComponent<NetworkBasePlayerMovement>();
     }
 }

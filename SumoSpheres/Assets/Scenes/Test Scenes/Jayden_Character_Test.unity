@@ -732,8 +732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3895e02cb6341ac4492079cdbbfb0e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformPreset: {fileID: 2655988077585873504, guid: 2177512fa0220e24cbd6696d681bf391,
-    type: 2}
 --- !u!4 &1172469407
 Transform:
   m_ObjectHideFlags: 0
@@ -1777,6 +1775,7 @@ GameObject:
   - component: {fileID: 704804998328302962}
   - component: {fileID: 608173893030694164}
   - component: {fileID: 671962402189302848}
+  - component: {fileID: 690203885295136107}
   m_Layer: 0
   m_Name: Base Network Player
   m_TagString: Player
@@ -1784,6 +1783,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &690203885295136107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690203885295136106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28177ab7e2b4f4cca96922d0577b91d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpawnTransform: {fileID: 5813921131916303020, guid: 9dfb9fcbf4eee499db79f2d5a49dacf6,
+    type: 3}
+  m_PlayerTransform: {fileID: 692816577403849360}
 --- !u!4 &692816577403849360
 Transform:
   m_ObjectHideFlags: 0
@@ -1977,6 +1991,7 @@ GameObject:
   - component: {fileID: 4247598068458338714}
   - component: {fileID: 4247082936023534315}
   - component: {fileID: 7773799869159681737}
+  - component: {fileID: 8462481122618320596}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -1984,6 +1999,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8462481122618320596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462481122618320595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28177ab7e2b4f4cca96922d0577b91d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpawnTransform: {fileID: 653604285097261190, guid: 5d840810ef292413692fd1f8451057b3,
+    type: 3}
+  m_PlayerTransform: {fileID: 7883267074539549996}
 --- !u!33 &8768397953620293713
 MeshFilter:
   m_ObjectHideFlags: 0

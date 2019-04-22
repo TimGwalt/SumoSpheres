@@ -14,6 +14,11 @@ public class DeathTrigger : MonoBehaviour
         if (photonView != null)
         {
             PlayerManager.m_Instance.ModifyLives(photonView.Owner, -1);
+            PlayerStats currentPlayerStats = PlayerManager.m_Instance.GetPlayerStats(photonView.Owner);
+            if (currentPlayerStats.m_Lives > 0)
+            {
+                other.GetComponent<Respawn>().KillPlayer();
+            }
         }
     }
 }

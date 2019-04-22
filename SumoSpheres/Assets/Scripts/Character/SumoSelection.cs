@@ -42,6 +42,7 @@ public class SumoSelection : MonoBehaviour
     {
         PlayerStats localPlayerStats = PlayerManager.m_Instance.GetPlayerStats(PhotonNetwork.LocalPlayer);
         localPlayerStats.m_SumoName = m_SumoArray[index].name;
+        localPlayerStats.m_SpawnPoint = m_SumoArray[index].GetComponent<Respawn>().m_SpawnTransform.position;
         SceneManager.LoadScene(2);
     }
 }

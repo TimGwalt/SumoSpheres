@@ -63,4 +63,5 @@ public class PlayerStats
     public readonly Player m_Player;
     public int m_Lives;
     public string m_SumoName;
+    public Vector3 m_SpawnPoint;
 }
