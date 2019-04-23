@@ -11,8 +11,9 @@ public class TeleportAbility : NetworkBasePlayerMovement
         Vector2 inputDirection = input.normalized;
         if(Input.GetKey(KeyCode.E) && coolDownTimer < Time.time)
         {
-           m_PlayerRB.position.Set(m_PlayerRB.transform.position.x * -1, m_PlayerRB.transform.position.y * -1, m_PlayerRB.transform.position.z);
-           coolDownTimer = Time.deltaTime + 5; 
+            Vector3 tele = new Vector3(m_PlayerRB.position.x * -1, m_PlayerRB.position.y, m_PlayerRB.position.z * -1);
+            m_PlayerRB.position = tele;
+            coolDownTimer = Time.deltaTime + 5; 
         }
     }
 }
