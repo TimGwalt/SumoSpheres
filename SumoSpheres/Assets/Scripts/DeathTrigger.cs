@@ -16,6 +16,10 @@ public class DeathTrigger : MonoBehaviour
             {
                 other.GetComponent<Respawn>().KillPlayer();
             }
+            else
+            {
+                PlayerManager.m_Instance.UpdateDeath();
+            }
         }
     }
 }

@@ -50,6 +50,11 @@ public class PlayerManager : MonoBehaviour
             PlayerNetwork.m_Instance.NewLives(player, playerStats.m_Lives);
         }
     }
+    
+    public void UpdateDeath()
+    {
+        PlayerNetwork.m_Instance.NewDeath();
+    }
 }
 
 public class PlayerStats

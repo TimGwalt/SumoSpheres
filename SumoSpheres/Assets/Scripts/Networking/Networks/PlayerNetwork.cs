@@ -12,9 +12,11 @@ public class PlayerNetwork : MonoBehaviour
     private PhotonView m_PhotonView;
     private int m_PlayersInGame = 0;
     private int m_PlayersInSumoSelect = 0;
+    private bool m_GameStarted = false;
+    private bool m_InEndGame = false;
     private NetworkBasePlayerMovement m_CurrentPlayerMovement;
     
-    void Awake()
+    private void Awake()
     {
         m_Instance = this;
         m_PhotonView = GetComponent<PhotonView>();
@@ -25,6 +27,22 @@ public class PlayerNetwork : MonoBehaviour
 
 
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
+    }
+
+    private void Update()
+    {
+        if (PhotonNetwork.IsMasterClient && !m_InEndGame && m_GameStarted && m_PlayersInGame <=1)
+        {
+            PhotonNetwork.LoadLevel(3);
+            m_PhotonView.RPC("RPC_LoadEndGameOthers", RpcTarget.Others);
+            m_InEndGame = true;
+        }
+    }
+
+    [PunRPC]
+    private void RPC_LoadEndGameOthers()
+    {
+        PhotonNetwork.LoadLevel(3);
     }
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -84,6 +102,7 @@ public class PlayerNetwork : MonoBehaviour
 
         if (m_PlayersInGame == PhotonNetwork.PlayerList.Length)
         {
+            m_GameStarted = true;
             Debug.Log("All players have loaded game scene!");
             m_PhotonView.RPC("RPC_CreatePlayer", RpcTarget.All);
         }
@@ -119,5 +138,16 @@ public class PlayerNetwork : MonoBehaviour
         Vector3 sumoPosition = localPlayerStats.m_SpawnPoint;
         GameObject gameObject = PhotonNetwork.Instantiate(Path.Combine("Prefabs", sumoName), sumoPosition, Quaternion.identity, 0);
         m_CurrentPlayerMovement = gameObject.GetComponent<NetworkBasePlayerMovement>();
+    }
+
+    public void NewDeath()
+    {
+        m_PhotonView.RPC("RPC_NewDeath", RpcTarget.MasterClient);
+    }
+
+    [PunRPC]
+    private void RPC_NewDeath()
+    {
+        m_PlayersInGame--;
     }
 }
