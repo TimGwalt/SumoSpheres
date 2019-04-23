@@ -7,9 +7,6 @@ public class DeathTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(!PhotonNetwork.IsMasterClient)
-            return;
-        
         PhotonView photonView = other.GetComponent<PhotonView>();
         if (photonView != null)
         {
