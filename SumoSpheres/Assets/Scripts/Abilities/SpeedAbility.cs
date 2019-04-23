@@ -4,16 +4,26 @@ using UnityEngine;
 using System.Timers;
 public class SpeedAbility : NetworkBasePlayerMovement
 {
-    public float speedBoost = 2f;
+    public float speedBoost = 5f;
     public override void CheckInput()
     {
         float coolDownTimer = Time.deltaTime + 5; 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDirection = input.normalized;
-        if(Input.GetKey(KeyCode.E) && coolDownTimer < Time.time)
+        if(Input.GetKeyUp(KeyCode.E) & coolDownTimer < Time.time)
         {
-           m_PlayerRB.AddForce(Vector3.forward.normalized * speedBoost, ForceMode.Impulse);
-           coolDownTimer = Time.deltaTime + 5; 
+            Vector3 movement = new Vector3(input.x, 0.0f, input.y);
+            Vector3 actualMovement = m_CameraTransform.TransformDirection(movement);
+            //m_PlayerRB.AddForce(actualMovement * m_MoveSpeed * speedBoost);
+            m_PlayerRB.AddForce(actualMovement * speedBoost, ForceMode.Impulse);
+            coolDownTimer = Time.deltaTime + 5; 
+        }
+        if(inputDirection != Vector2.zero)
+        {
+            // Add force to the player dependent on input axes and camera direction.
+            Vector3 movement = new Vector3(input.x, 0.0f, input.y);
+            Vector3 actualMovement = m_CameraTransform.TransformDirection(movement);
+            m_PlayerRB.AddForce(actualMovement * m_MoveSpeed);
         }
     }
 }
