@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3309719969552621828}
   - component: {fileID: 7744050854632052278}
   - component: {fileID: 1218229145684032403}
+  - component: {fileID: 4223156555557639149}
   - component: {fileID: 564010851412609106}
   - component: {fileID: 1341972208037882594}
   m_Layer: 0
@@ -189,6 +190,27 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &4223156555557639149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690203883971594437}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4169eccd80803e4aaa28a08241ac2ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveSpeed: 2
+  m_RotateSpeed: 1
+  m_JumpSpeed: 2
+  m_PlayerRB: {fileID: 0}
+  m_PlayerCollider: {fileID: 0}
+  m_CameraTransform: {fileID: 0}
+  m_DistanceToGround: 0
+  TargetPosition: {x: 0, y: 0, z: 0}
+  TargetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &564010851412609106
 MonoBehaviour:
   m_ObjectHideFlags: 0
