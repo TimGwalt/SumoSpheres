@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
 {
@@ -80,8 +81,20 @@ public class PlayerLayoutGroup : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsMasterClient)
             return;
         
+        
         PhotonNetwork.CurrentRoom.IsOpen = !PhotonNetwork.CurrentRoom.IsOpen;
         PhotonNetwork.CurrentRoom.IsVisible = !PhotonNetwork.CurrentRoom.IsVisible;
+
+        if (PhotonNetwork.CurrentRoom.IsOpen)
+        {
+            GameObject.Find("RoomState").GetComponentInChildren<TextMeshProUGUI>().text = "Hide Room";
+            GameObject.Find("RoomState").GetComponentInChildren<TextMeshProUGUI>().alignment = TextAlignmentOptions.Midline;
+        }
+        else
+        {
+            GameObject.Find("RoomState").GetComponentInChildren<TextMeshProUGUI>().text = "Open Room";
+            GameObject.Find("RoomState").GetComponentInChildren<TextMeshProUGUI>().alignment = TextAlignmentOptions.Capline;
+        }
     }
 
     public void OnClickLeaveRoom()
