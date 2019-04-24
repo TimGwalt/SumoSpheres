@@ -1550,8 +1550,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485019169}
-  m_LocalRotation: {x: 0.02281685, y: 0.012316686, z: 0.0002816928, w: -0.9996638}
-  m_LocalPosition: {x: 663.5237, y: -452.06534, z: -2303.4978}
+  m_LocalRotation: {x: -0.38268346, y: -0, z: -0, w: 0.9238795}
+  m_LocalPosition: {x: -1.5492842, y: -12.7645035, z: 2.292076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2043996943}
@@ -2998,8 +2998,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899272936}
-  m_LocalRotation: {x: 0.02281685, y: 0.012316686, z: 0.0002816928, w: -0.9996638}
-  m_LocalPosition: {x: 663.5237, y: -461.84534, z: -2303.4978}
+  m_LocalRotation: {x: -0.38268346, y: -0, z: -0, w: 0.9238795}
+  m_LocalPosition: {x: -1.5492842, y: -22.544502, z: 2.292076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2043996943}
@@ -7543,6 +7543,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906536565958540359, guid: 49301eb9fe5a69e479517f2784df79e6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8906536565080203472, guid: 49301eb9fe5a69e479517f2784df79e6,
         type: 3}
