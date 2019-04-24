@@ -6,12 +6,14 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
     public float m_MoveSpeed = 2f;
     public float m_RotateSpeed = 1f;
     public float m_JumpSpeed = 2f;
+    public int m_Lives;
+
     private Rigidbody m_PlayerRB;
     private SphereCollider m_PlayerCollider;
     public Transform m_CameraTransform;
     private float m_DistanceToGround;
-    private Vector3 TargetPosition;
-    private Quaternion TargetRotation;
+    private Vector3 m_TargetPosition;
+    private Quaternion m_TargetRotation;
     
     private void Start()
     {
@@ -37,8 +39,8 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
 
     private void SmoothMove()
     {
-        transform.position = Vector3.Lerp(transform.position, TargetPosition, 0.25f);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500);
+        transform.position = Vector3.Lerp(transform.position, m_TargetPosition, 0.25f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, 500);
     }
 
     private void CheckInput()
@@ -72,8 +74,8 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
         else
         {
-            TargetPosition = (Vector3) stream.ReceiveNext();
-            TargetRotation = (Quaternion) stream.ReceiveNext();
+            m_TargetPosition = (Vector3) stream.ReceiveNext();
+            m_TargetRotation = (Quaternion) stream.ReceiveNext();
         }
     }
 }

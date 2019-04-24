@@ -3,6 +3,7 @@ using Photon.Pun;
 
 public class CurrentRoomCanvas : MonoBehaviour
 {
+
     public void OnClickStartGame()
     {
         if (!PhotonNetwork.IsMasterClient)
