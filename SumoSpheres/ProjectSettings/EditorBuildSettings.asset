@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Scenes/Jayden_Network_Test.unity
     guid: 9d09cc19b0ddd4f15a7850c3da84efc9
   - enabled: 1
+    path: Assets/Scenes/Test Scenes/Jayden_Character_Test.unity
+    guid: d7016d849e9409e41a8a88f1a2d2dc03
+  - enabled: 1
     path: Assets/Scenes/Test Scenes/Jayden_Test.unity
     guid: dd4bca7f115b14d7d8d79691d8d8b674
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/Jayden_End_Game_Test.unity
+    guid: d867ebbd25a450745b7e285106540c15
   m_configObjects: {}

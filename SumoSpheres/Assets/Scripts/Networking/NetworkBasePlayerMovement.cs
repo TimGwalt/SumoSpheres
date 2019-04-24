@@ -6,16 +6,16 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
     public float m_MoveSpeed = 2f;
     public float m_RotateSpeed = 1f;
     public float m_JumpSpeed = 2f;
+    public int m_Lives;
 
-    // TODO: Make every variable under here private and makes getters/setters.
-    public Rigidbody m_PlayerRB;
-    public SphereCollider m_PlayerCollider;
-    public Transform m_CameraTransform;
-    public float m_DistanceToGround;
-    public Vector3 TargetPosition;
-    public Quaternion TargetRotation;
+    private Rigidbody m_PlayerRB;
+    private SphereCollider m_PlayerCollider;
+    private Transform m_CameraTransform;
+    private float m_DistanceToGround;
+    private Vector3 m_TargetPosition;
+    private Quaternion m_TargetRotation;
     
-    public void Start()
+    private void Start()
     {
         m_PlayerRB = GetComponent<Rigidbody>();
         m_PlayerCollider = GetComponent<SphereCollider>();
@@ -27,7 +27,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
     }
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
         if (photonView.IsMine)
         {
@@ -37,20 +37,20 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
             SmoothMove();
     }
 
-    public void SmoothMove()
+    private void SmoothMove()
     {
-        transform.position = Vector3.Lerp(transform.position, TargetPosition, 0.25f);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500);
+        transform.position = Vector3.Lerp(transform.position, m_TargetPosition, 0.25f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, 500);
     }
 
-    public virtual void CheckInput()
+    private void CheckInput()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDirection = input.normalized;
-        /* if(Input.GetKey(KeyCode.Space) & IsGrounded())
+        if(Input.GetKey(KeyCode.Space) & IsGrounded())
         {
             m_PlayerRB.AddForce(Vector3.up * m_JumpSpeed, ForceMode.Impulse);
-        } */
+        }
         if(inputDirection != Vector2.zero)
         {
             // Add force to the player dependent on input axes and camera direction.
@@ -60,7 +60,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
     }
 
-    public bool IsGrounded()
+    private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, m_DistanceToGround);
     }
@@ -74,8 +74,8 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
         else
         {
-            TargetPosition = (Vector3) stream.ReceiveNext();
-            TargetRotation = (Quaternion) stream.ReceiveNext();
+            m_TargetPosition = (Vector3) stream.ReceiveNext();
+            m_TargetRotation = (Quaternion) stream.ReceiveNext();
         }
     }
 }
