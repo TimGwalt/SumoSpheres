@@ -47,10 +47,10 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDirection = input.normalized;
-        /* if(Input.GetKey(KeyCode.Space) & IsGrounded())
+        if(Input.GetKey(KeyCode.Space) & IsGrounded())
         {
             m_PlayerRB.AddForce(Vector3.up * m_JumpSpeed, ForceMode.Impulse);
-        } */
+        }
         if(inputDirection != Vector2.zero)
         {
             // Add force to the player dependent on input axes and camera direction.
