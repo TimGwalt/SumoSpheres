@@ -5,7 +5,7 @@ using System.Timers;
 public class SpeedAbility : NetworkBasePlayerMovement
 {
     public float speedBoost = 5f;
-    float coolDownTimer = Time.deltaTime + 5; 
+    float coolDownTimer; 
 
     // Overrides the checkInput method from the base class.
     // Applies a force to increase speed in the direction 
