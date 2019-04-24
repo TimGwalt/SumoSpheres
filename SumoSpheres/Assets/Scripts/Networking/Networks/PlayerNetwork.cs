@@ -9,22 +9,26 @@ public class PlayerNetwork : MonoBehaviour
     public static PlayerNetwork m_Instance;
     public string m_Name {get; private set;}
 
-    private PhotonView m_PhotonView;
+    private string[] colors = {"Red", "Green", "Blue", "Orange", "Purple", "Yellow", "Salmon", "Pink", "Aquamarine", "Magenta"};
+    private string[] animals = {"Rhino", "Cheetah", "Snake", "Lion", "Puppy", "Puma", "Platypus", "Weasel", "Rat", "Walrus", "Emu"};
+
     private int m_PlayersInGame = 0;
     private int m_PlayersInSumoSelect = 0;
     private bool m_GameStarted = false;
     private bool m_InEndGame = false;
     private NetworkBasePlayerMovement m_CurrentPlayerMovement;
-    
+    private PhotonView m_PhotonView;
+
     private void Awake()
     {
         m_Instance = this;
         m_PhotonView = GetComponent<PhotonView>();
-        m_Name = "Player#" + Random.Range(1,5);
+        string color = colors[Random.Range(0, 9)];
+        string animal = animals[Random.Range(0, 10)];
+        m_Name = color + ' ' + animal;
 
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
-
 
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
