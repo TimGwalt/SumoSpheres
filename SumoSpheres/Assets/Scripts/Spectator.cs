@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 public class Spectator : MonoBehaviourPun
@@ -11,12 +7,17 @@ public class Spectator : MonoBehaviourPun
  	//initial speed
 	public int speed =2;
 	public Transform currentCamera;
+    private object p;
 
- 	
- 	// Use this for initialization
- 	void Start () {
- 		//Get Camera.
- 	}
+
+    // Use this for initialization
+    void Start ()
+    {
+        NetworkBasePlayerMovement player = new NetworkBasePlayerMovement();
+        p = player.GetComponent<Transform>();
+        //Get Camera
+        this.currentCamera = GetCamera(player);
+    }
   
  	// Update is called once per frame
  	void Update () {
