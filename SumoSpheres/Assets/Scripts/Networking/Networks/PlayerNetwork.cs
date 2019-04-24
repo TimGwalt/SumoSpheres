@@ -10,11 +10,18 @@ public class PlayerNetwork : MonoBehaviour
     private PhotonView m_PhotonView;
     private int m_PlayersInGame = 0;
 
+    string[] colors = {"Red", "Green", "Blue", "Orange", "Purple", "Yellow", "Salmon", "Pink", "Aquamarine", "Magenta"};
+    string[] animals = {"Rhino", "Cheetah", "Snake", "Lion", "Puppy", "Puma", "Platypus", "Weasel", "Rat", "Walrus", "Emu"};
+
+
     void Awake()
     {
         m_Instance = this;
         m_PhotonView = GetComponent<PhotonView>();
-        m_Name = "Player#" + Random.Range(1000, 9999);
+        string color = colors[Random.Range(0, 9)];
+        string animal = animals[Random.Range(0, 10)];
+        
+        m_Name = color + ' ' + animal;
 
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
