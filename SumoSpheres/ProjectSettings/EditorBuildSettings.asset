@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Scenes/Jayden_Test.unity
     guid: dd4bca7f115b14d7d8d79691d8d8b674
   - enabled: 1
-    path: Assets/Scenes/Test Scenes/Jamison_Test.unity
-    guid: b6d90a86ae9814aa4a33d7abf9b4785f
+    path: Assets/Scenes/Test Scenes/Jayden_End_Game_Test.unity
+    guid: d867ebbd25a450745b7e285106540c15
   m_configObjects: {}

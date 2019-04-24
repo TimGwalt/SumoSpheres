@@ -49,6 +49,7 @@ public class PlayerNetwork : MonoBehaviour
     {
         if (scene.name == "Jayden_Character_Test")
         {
+            m_PlayersInSumoSelect = 0;
             if (PhotonNetwork.IsMasterClient)
                 MasterLoadedSumoSelect();
             else
@@ -56,6 +57,7 @@ public class PlayerNetwork : MonoBehaviour
         }
         else if (scene.name == "Jayden_Test")
         {
+            m_PlayersInGame = 0;
             LoadedGame();
             // m_PhotonView.RPC("RPC_CreatePlayer", RpcTarget.All);
         }

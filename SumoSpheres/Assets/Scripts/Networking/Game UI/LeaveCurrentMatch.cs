@@ -7,8 +7,11 @@ public class LeaveCurrentMatch : MonoBehaviour
 {
     public void OnClickLeaveMatch()
     {
+        foreach (GameObject DDOLObject in GameObject.FindGameObjectsWithTag("DDOL"))
+        {
+            Destroy(DDOLObject);
+        }
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel(0); 
-        Destroy(GameObject.Find("DDOL"));
+        PhotonNetwork.LoadLevel(0);
     }
 }
