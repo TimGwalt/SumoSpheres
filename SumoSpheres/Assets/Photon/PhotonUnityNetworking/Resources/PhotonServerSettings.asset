@@ -32,5 +32,11 @@ MonoBehaviour:
   - RPC_LoadedGameScene
   - RPC_LoadGameOthers
   - RPC_CreatePlayer
+  - RPC_NewLives
+  - RPC_LoadedSumoSelectScene
+  - RPC_LoadSumoSelectOthers
+  - RPC_KillPlayer
+  - RPC_NewDeath
+  - RPC_LoadEndGameOthers
   DisableAutoOpenWizard: 1
   ShowSettings: 1
