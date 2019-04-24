@@ -21,7 +21,7 @@ public class SpeedAbility : NetworkBasePlayerMovement
             Vector3 movement = new Vector3(input.x, 0.0f, input.y);
             Vector3 actualMovement = m_CameraTransform.TransformDirection(movement);
             m_PlayerRB.AddForce(actualMovement * speedBoost, ForceMode.Impulse);
-            coolDownTimer = Time.deltaTime + coolDownLength; 
+            coolDownTimer = Time.time + coolDownLength; 
         }
     }
 
