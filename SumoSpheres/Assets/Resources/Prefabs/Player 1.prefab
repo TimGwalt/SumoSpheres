@@ -90,10 +90,6 @@ GameObject:
   - component: {fileID: 4247598067946130669}
   - component: {fileID: 4247082936517984156}
   - component: {fileID: 7773799869687602110}
-  - component: {fileID: 8368104163316224353}
-  - component: {fileID: 8816149053182233796}
-  - component: {fileID: 7376728866662467361}
-  - component: {fileID: 5250483653370895645}
   - component: {fileID: 2632672140578553379}
   - component: {fileID: 4234157652525732436}
   - component: {fileID: 4809584490853923610}
@@ -250,6 +246,7 @@ MonoBehaviour:
   m_RotateSpeed: 1
   m_JumpSpeed: 2
   m_Lives: 0
+  m_CameraTransform: {fileID: 0}
 --- !u!114 &3600081689574426274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +254,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8462481123280524196}
-  currentCamera: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
