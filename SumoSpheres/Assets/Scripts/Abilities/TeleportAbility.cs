@@ -4,7 +4,8 @@ using UnityEngine;
 using System.Timers;
 public class TeleportAbility : NetworkBasePlayerMovement
 {
-    float coolDownTimer; 
+    float coolDownTimer;
+    public float coolDownLength = 5f;
     
     // Overrides the checkInput method from the base class.
     // Changes the players loction to the opposite x and z axis coords.
@@ -16,7 +17,7 @@ public class TeleportAbility : NetworkBasePlayerMovement
             {
                 Vector3 tele = new Vector3(m_PlayerRB.position.x * -1, m_PlayerRB.position.y, m_PlayerRB.position.z * -1);
                 m_PlayerRB.position = tele;
-                coolDownTimer = Time.time + 5; 
+                coolDownTimer = Time.time + coolDownLength; 
             }
     }
 

@@ -6,6 +6,7 @@ public class SpeedAbility : NetworkBasePlayerMovement
 {
     public float speedBoost = 5f;
     float coolDownTimer; 
+    public float coolDownLength = 5f;
 
     // Overrides the checkInput method from the base class.
     // Applies a force to increase speed in the direction 
@@ -20,7 +21,7 @@ public class SpeedAbility : NetworkBasePlayerMovement
             Vector3 movement = new Vector3(input.x, 0.0f, input.y);
             Vector3 actualMovement = m_CameraTransform.TransformDirection(movement);
             m_PlayerRB.AddForce(actualMovement * speedBoost, ForceMode.Impulse);
-            coolDownTimer = Time.deltaTime + 5; 
+            coolDownTimer = Time.deltaTime + coolDownLength; 
         }
     }
 

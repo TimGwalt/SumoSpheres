@@ -8,6 +8,7 @@ public class CloneAbility : NetworkBasePlayerMovement
     GameObject m_PlayerClone;
     public GameObject m_Player;
     public float destroyTimer = 5f;
+    public float coolDownLength = 5f;
     
     // Overrides the checkInput method from the base class.
     // Makes a clone of the player character that lasts a short time.
@@ -23,7 +24,7 @@ public class CloneAbility : NetworkBasePlayerMovement
                 m_PlayerClone = Instantiate(m_Player, transform.position, Quaternion.identity) as GameObject;
                 m_PlayerClone.GetComponent<Rigidbody>().AddForce(movement * 2, ForceMode.Impulse);
                 Destroy(m_PlayerClone, destroyTimer);
-                coolDownTimer = Time.time + 5; 
+                coolDownTimer = Time.time + coolDownLength; 
             }
     }
 
