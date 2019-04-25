@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 289d3d97f018c8948b7738e37cadf8e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28177ab7e2b4f4cca96922d0577b91d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpawnTransform: {fileID: 653604285097261190, guid: 5d840810ef292413692fd1f8451057b3,
+  m_SpawnTransform: {fileID: 7883267076041654363, guid: 3f493eef8a77f014190ab32fcdc53cad,
     type: 3}
   m_PlayerTransform: {fileID: 7883267076041654363}
 --- !u!114 &4038361264138354789
