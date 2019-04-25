@@ -270,7 +270,12 @@ MonoBehaviour:
   m_RotateSpeed: 1
   m_JumpSpeed: 2
   m_Lives: 0
+  m_PlayerRB: {fileID: 0}
+  m_PlayerCollider: {fileID: 0}
   m_CameraTransform: {fileID: 0}
+  m_DistanceToGround: 0
+  m_TargetPosition: {x: 0, y: 0, z: 0}
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &8747507014841356526
 MonoBehaviour:
   m_ObjectHideFlags: 0
