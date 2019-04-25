@@ -43,7 +43,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, 500);
     }
 
-    public void CheckInput()
+    public virtual void CheckInput()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDirection = input.normalized;
