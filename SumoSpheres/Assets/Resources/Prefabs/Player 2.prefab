@@ -91,10 +91,11 @@ GameObject:
   - component: {fileID: 387957019966553706}
   - component: {fileID: 8287766816461074647}
   - component: {fileID: 4003792189234115552}
-  - component: {fileID: 8747507014841356526}
   - component: {fileID: 5212189393073505517}
   - component: {fileID: 304300535443859997}
   - component: {fileID: 2598067116974946207}
+  - component: {fileID: 8747507014841356526}
+  - component: {fileID: 8385361000967666922}
   - component: {fileID: 8526157489584585881}
   m_Layer: 0
   m_Name: Player 2
@@ -207,29 +208,14 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 2598067116974946207}
+  - {fileID: 8747507014841356526}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &8747507014841356526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5867317934379694533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
-  m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &5212189393073505517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +270,38 @@ MonoBehaviour:
   m_RotateSpeed: 1
   m_JumpSpeed: 2
   m_Lives: 0
+  m_CameraTransform: {fileID: 0}
+--- !u!114 &8747507014841356526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867317934379694533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &8385361000967666922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5867317934379694533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28177ab7e2b4f4cca96922d0577b91d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpawnTransform: {fileID: 5813921131916303020, guid: 9dfb9fcbf4eee499db79f2d5a49dacf6,
+    type: 3}
+  m_PlayerTransform: {fileID: 0}
 --- !u!114 &8526157489584585881
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 4234157652525732436}
   - component: {fileID: 4809584490853923610}
   - component: {fileID: 3600081689574426274}
-  - component: {fileID: 4038361264138354789}
   - component: {fileID: 6749941688089734018}
+  - component: {fileID: 4038361264138354789}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -263,18 +263,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &4038361264138354789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8462481123280524196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cab0f5cfec67b2409804305d1a9f7d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6749941688089734018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,3 +278,15 @@ MonoBehaviour:
   m_SpawnTransform: {fileID: 653604285097261190, guid: 5d840810ef292413692fd1f8451057b3,
     type: 3}
   m_PlayerTransform: {fileID: 7883267076041654363}
+--- !u!114 &4038361264138354789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462481123280524196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cab0f5cfec67b2409804305d1a9f7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
