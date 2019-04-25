@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 114610657545359466}
   - component: {fileID: 114455919729939338}
   - component: {fileID: 4267543438095812793}
-  - component: {fileID: 1121709303118689261}
+  - component: {fileID: 2789365774156042010}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -180,20 +180,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  jumpSpeed: 2
+  jumpSpeed: 1
   canvas: {fileID: 0}
---- !u!114 &1121709303118689261
+  paused: 0
+--- !u!114 &2789365774156042010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912269700849468}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7a0a19376c94afea0e26ccab972e65, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e1209938286749ff9e3dbc627bfdd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1912269700849468}
-  coolDown: 4.96
-  initcoolDown: 5
+  speed: 20
+  currentCamera: {fileID: 0}

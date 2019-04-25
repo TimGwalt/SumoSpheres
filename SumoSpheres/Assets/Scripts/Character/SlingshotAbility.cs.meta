@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1ae9a00b50a48764b83252f7e881ba0c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_PlayerRB: {instanceID: 0}
+  - m_PlayerCollider: {instanceID: 0}
+  - m_CameraTransform: {instanceID: 0}
+  - anchor: {fileID: 5566627874490643398, guid: ba93d5e049206fe429386f3d4156fc22,
+      type: 3}
+  - anchorCopy: {instanceID: 0}
+  - lineRenderer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
