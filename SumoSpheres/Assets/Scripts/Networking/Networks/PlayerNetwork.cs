@@ -35,7 +35,7 @@ public class PlayerNetwork : MonoBehaviour
 
     private void Update()
     {
-        if (PhotonNetwork.IsMasterClient && !m_InEndGame && m_GameStarted && m_PlayersInGame <=1)
+        if (PhotonNetwork.IsMasterClient && !m_InEndGame && m_GameStarted && m_PlayersInGame <= 0)
         {
             PhotonNetwork.LoadLevel(3);
             m_PhotonView.RPC("RPC_LoadEndGameOthers", RpcTarget.Others);

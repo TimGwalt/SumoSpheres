@@ -17,5 +17,6 @@ public class Respawn : MonoBehaviour
     public void KillPlayer()
     {
         m_PlayerTransform.position = m_SpawnTransform.position;
+        m_PlayerTransform.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 }

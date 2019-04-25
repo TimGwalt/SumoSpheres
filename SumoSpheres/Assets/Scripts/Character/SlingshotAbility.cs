@@ -8,7 +8,7 @@ public class SlingshotAbility : NetworkBasePlayerMovement
     public GameObject anchorCopy;
     public LineRenderer lineRenderer;
     private bool slingshot = false;
-    public int slingForce = 100;
+    public int slingForce = 50;
 
     public override void CheckInput()
     {
