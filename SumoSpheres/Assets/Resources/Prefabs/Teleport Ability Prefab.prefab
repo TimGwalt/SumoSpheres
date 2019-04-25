@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28177ab7e2b4f4cca96922d0577b91d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpawnTransform: {fileID: 7883267076041654363, guid: 3f493eef8a77f014190ab32fcdc53cad,
+  m_SpawnTransform: {fileID: 5813921131916303020, guid: 9dfb9fcbf4eee499db79f2d5a49dacf6,
     type: 3}
   m_PlayerTransform: {fileID: 7883267076041654363}
 --- !u!114 &4038361264138354789
@@ -211,9 +211,9 @@ MonoBehaviour:
   m_RotateSpeed: 1
   m_JumpSpeed: 2
   m_Lives: 0
-  m_PlayerRB: {fileID: 0}
-  m_PlayerCollider: {fileID: 0}
-  m_CameraTransform: {fileID: 0}
+  m_PlayerRB: {fileID: 4247082936517984156}
+  m_PlayerCollider: {fileID: 7773799869687602110}
+  m_CameraTransform: {fileID: 7883267076041654363}
   m_DistanceToGround: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
   m_TargetRotation: {x: 0, y: 0, z: 0, w: 0}

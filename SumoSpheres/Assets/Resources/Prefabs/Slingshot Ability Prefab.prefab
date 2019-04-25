@@ -211,12 +211,13 @@ MonoBehaviour:
   m_RotateSpeed: 1
   m_JumpSpeed: 2
   m_Lives: 0
-  m_PlayerRB: {fileID: 0}
-  m_PlayerCollider: {fileID: 0}
-  m_CameraTransform: {fileID: 0}
+  m_PlayerRB: {fileID: 4247082936517984156}
+  m_PlayerCollider: {fileID: 7773799869687602110}
+  m_CameraTransform: {fileID: 7883267076041654363}
   m_DistanceToGround: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
   m_TargetRotation: {x: 0, y: 0, z: 0, w: 0}
   anchor: {fileID: 5566627874490643398, guid: ba93d5e049206fe429386f3d4156fc22, type: 3}
   anchorCopy: {fileID: 0}
   lineRenderer: {fileID: 0}
+  slingForce: 100
