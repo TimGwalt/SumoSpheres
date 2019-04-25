@@ -24,13 +24,4 @@ public class SpeedAbility : NetworkBasePlayerMovement
             coolDownTimer = Time.time + coolDownLength; 
         }
     }
-
-
-    // Updated once per frame. 
-    // Used to keep track of time for ability cool down.
-        private void update()
-    {
-        CheckInput();
-    }
-
 }

@@ -18,22 +18,13 @@ public class CloneAbility : NetworkBasePlayerMovement
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDirection = input.normalized;
 
-            if(Input.GetKeyUp(KeyCode.E) & Time.time > coolDownTimer) // Checks for of "E" input and cool down.
-            {
-                Vector3 movement = new Vector3(input.x, 0.0f, input.y);
-                m_PlayerClone = Instantiate(m_Player, transform.position, Quaternion.identity) as GameObject;
-                m_PlayerClone.GetComponent<Rigidbody>().AddForce(movement * 2, ForceMode.Impulse);
-                Destroy(m_PlayerClone, destroyTimer);
-                coolDownTimer = Time.time + coolDownLength; 
-            }
+        if(Input.GetKeyUp(KeyCode.E) & Time.time > coolDownTimer) // Checks for of "E" input and cool down.
+        {
+            Vector3 movement = new Vector3(input.x, 0.0f, input.y);
+            m_PlayerClone = Instantiate(m_Player, transform.position, Quaternion.identity) as GameObject;
+            m_PlayerClone.GetComponent<Rigidbody>().AddForce(movement * 2, ForceMode.Impulse);
+            Destroy(m_PlayerClone, destroyTimer);
+            coolDownTimer = Time.time + coolDownLength; 
+        }
     }
-
-    // Updated once per frame. 
-    // Used to keep track of time for ability cool down.
-    private void update()
-    {
-        CheckInput();
-    }
-
-
 }
