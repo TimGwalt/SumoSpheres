@@ -219,5 +219,5 @@ MonoBehaviour:
   m_TargetRotation: {x: 0, y: 0, z: 0, w: 0}
   m_Player: {fileID: 5539219091124521800, guid: c86356ac75d63804db1859583a17c3a5,
     type: 3}
-  destroyTimer: 5
+  destroyTimer: 3
   coolDownLength: 5
