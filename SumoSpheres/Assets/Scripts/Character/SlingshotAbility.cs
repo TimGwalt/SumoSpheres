@@ -8,6 +8,7 @@ public class SlingshotAbility : NetworkBasePlayerMovement
     public GameObject anchorCopy;
     public LineRenderer lineRenderer;
     private bool slingshot = false;
+    public int slingForce = 100;
 
     public override void CheckInput()
     {
@@ -25,9 +26,7 @@ public class SlingshotAbility : NetworkBasePlayerMovement
             else
             {
                 Vector3 distance = anchor.transform.position - this.transform.position;
-                m_PlayerRB.AddForce(
-                    distance * (Vector3.Distance(anchor.transform.position, this.transform.position) * 10));
-
+                m_PlayerRB.AddForce(distance * (Vector3.Distance(anchor.transform.position, this.transform.position) * slingForce));
                 Destroy(anchorCopy);
                 slingshot = false;
             }
