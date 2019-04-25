@@ -27,6 +27,10 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
     }
 
+public void Update()
+    {
+        CheckSling();
+    }
     public void FixedUpdate()
     {
         if (photonView.IsMine)
@@ -37,6 +41,10 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
             SmoothMove();
     }
 
+    public virtual void CheckSling()
+    {
+        return;
+    }
     public void SmoothMove()
     {
         transform.position = Vector3.Lerp(transform.position, m_TargetPosition, 0.25f);

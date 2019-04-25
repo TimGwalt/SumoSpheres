@@ -220,4 +220,4 @@ MonoBehaviour:
   anchor: {fileID: 5566627874490643398, guid: ba93d5e049206fe429386f3d4156fc22, type: 3}
   anchorCopy: {fileID: 0}
   lineRenderer: {fileID: 0}
-  slingForce: 100
+  slingForce: 30

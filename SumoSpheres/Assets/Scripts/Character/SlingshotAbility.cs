@@ -8,12 +8,11 @@ public class SlingshotAbility : NetworkBasePlayerMovement
     public GameObject anchorCopy;
     public LineRenderer lineRenderer;
     private bool slingshot = false;
-    public int slingForce = 50;
+    public int slingForce = 10;
 
-    public override void CheckInput()
+    public override void CheckSling()
     {
-        base.CheckInput();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             if (!slingshot)
             {
