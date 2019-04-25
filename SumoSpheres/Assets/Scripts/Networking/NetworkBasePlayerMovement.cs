@@ -8,14 +8,14 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
     public float m_JumpSpeed = 2f;
     public int m_Lives;
 
-    private Rigidbody m_PlayerRB;
-    private SphereCollider m_PlayerCollider;
+    public Rigidbody m_PlayerRB;
+    public SphereCollider m_PlayerCollider;
     public Transform m_CameraTransform;
-    private float m_DistanceToGround;
-    private Vector3 m_TargetPosition;
-    private Quaternion m_TargetRotation;
+    public float m_DistanceToGround;
+    public Vector3 m_TargetPosition;
+    public Quaternion m_TargetRotation;
     
-    private void Start()
+    public void Start()
     {
         m_PlayerRB = GetComponent<Rigidbody>();
         m_PlayerCollider = GetComponent<SphereCollider>();
@@ -27,7 +27,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if (photonView.IsMine)
         {
@@ -37,13 +37,13 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
             SmoothMove();
     }
 
-    private void SmoothMove()
+    public void SmoothMove()
     {
         transform.position = Vector3.Lerp(transform.position, m_TargetPosition, 0.25f);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, 500);
     }
 
-    private void CheckInput()
+    public virtual void CheckInput()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector2 inputDirection = input.normalized;
@@ -60,7 +60,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, m_DistanceToGround);
     }
