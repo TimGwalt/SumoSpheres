@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
         int index = m_PlayerStats.FindIndex(x => x.m_Player == player);
         if (index == -1)
         {
-            m_PlayerStats.Add(new PlayerStats(player, 3));
+            m_PlayerStats.Add(new PlayerStats(player, 5));
         }
     }
 
