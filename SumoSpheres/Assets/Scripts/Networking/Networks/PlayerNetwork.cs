@@ -19,6 +19,7 @@ public class PlayerNetwork : MonoBehaviour
     private NetworkBasePlayerMovement m_CurrentPlayerMovement;
     private PhotonView m_PhotonView;
 
+    // On component start set the static PlayerNetwork instance, player name, and network settings.
     private void Awake()
     {
         m_Instance = this;
@@ -30,9 +31,11 @@ public class PlayerNetwork : MonoBehaviour
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
 
+        // Call OnSceneFinishedLoading whenever a scene is loaded.
         SceneManager.sceneLoaded += OnSceneFinishedLoading;
     }
 
+    // Check every frame if the game has ended and, if so, load the end game scene.
     private void Update()
     {
         if (PhotonNetwork.IsMasterClient && !m_InEndGame && m_GameStarted && m_PlayersInGame <= 1)

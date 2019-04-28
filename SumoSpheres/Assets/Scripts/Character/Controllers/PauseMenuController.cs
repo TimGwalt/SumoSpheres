@@ -7,6 +7,7 @@ public class PauseMenuController : MonoBehaviourPun
 {
     private Canvas m_PauseCanvas;
 
+    // Ensures that the player can control only their own pause menu canvas
     private void Start()
     {
         if (photonView.IsMine)
@@ -15,6 +16,7 @@ public class PauseMenuController : MonoBehaviourPun
         }
     }
 
+    // Detect pause menu input and enable the canvas on escape keypress
     private void Update()
     {
         if (photonView.IsMine && Input.GetKeyDown(KeyCode.Escape))

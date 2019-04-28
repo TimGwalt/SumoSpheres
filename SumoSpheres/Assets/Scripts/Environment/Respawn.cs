@@ -14,6 +14,7 @@ public class Respawn : MonoBehaviour
         m_PlayerTransform = this.transform;
     }
 
+    // Sets player position to the spawn position and resets player velocity.
     public void KillPlayer()
     {
         m_PlayerTransform.position = m_SpawnTransform.position;

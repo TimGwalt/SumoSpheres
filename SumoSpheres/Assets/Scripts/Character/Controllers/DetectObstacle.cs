@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class DetectObstacle : MonoBehaviour
 {
-    public Transform player;
-    private LayerMask fadeMask;
+    public Transform m_Player;
 
-    /* void Start()
-    {
-        fadeMask = LayerMask.GetMask("Terrain");
-    } */
 
+    // Casts a ray from the current gameObject towards the player and sends a FadeObstacle message to the gameObject that is hit.
     void Update()
     {
-        if (player)
+        if (m_Player)
         {
             RaycastHit obstructionHit;
-            if(Physics.Raycast(transform.position, player.position - transform.position, out obstructionHit, Mathf.Infinity))
+            if(Physics.Raycast(transform.position, m_Player.position - transform.position, out obstructionHit, Mathf.Infinity))
             {
                 obstructionHit.transform.gameObject.SendMessage("FadeObstacle", SendMessageOptions.DontRequireReceiver);
             }

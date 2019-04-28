@@ -18,6 +18,7 @@ public class ThirdPersonCamera : MonoBehaviour
     Vector3 rotationSmoothVelocity;
     Vector3 currentRotation;
 
+    // Calculate camera position only after all physics simulations have been performed
     void LateUpdate()
     {
         if(target)

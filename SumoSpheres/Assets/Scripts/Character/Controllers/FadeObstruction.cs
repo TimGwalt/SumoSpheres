@@ -18,7 +18,7 @@ public class FadeObstruction : MonoBehaviour
         color = material.color;
     }
 
-    // Update is called once per frame
+    // If fadeObstacle is true fade towards the targetAlpha
     void Update()
     {
         if (fadeObstacle) {

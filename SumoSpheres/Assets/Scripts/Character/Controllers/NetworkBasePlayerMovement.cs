@@ -15,6 +15,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
     public Vector3 m_TargetPosition;
     public Quaternion m_TargetRotation;
     
+    // Set player member variables and, if the Photon View is the local player's set the camera to follow the player.
     public void Start()
     {
         m_PlayerRB = GetComponent<Rigidbody>();
@@ -27,7 +28,7 @@ public class NetworkBasePlayerMovement : MonoBehaviourPun, IPunObservable
         }
     }
 
-public void Update()
+    public void Update()
     {
         CheckSling();
     }
@@ -51,6 +52,7 @@ public void Update()
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, 500);
     }
 
+    // Gathers input from the user and applies forces to the player rigidbody based on inputs
     public virtual void CheckInput()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -68,11 +70,13 @@ public void Update()
         }
     }
 
+    // Detects if the player is grounded
     public bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, m_DistanceToGround);
     }
 
+    // Sends position and rotation data over the network
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting == true)

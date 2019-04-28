@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// This script is not being used in the final version of the game. It is only being saved for posterity.
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 

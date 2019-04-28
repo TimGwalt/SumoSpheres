@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class DeathTrigger : MonoBehaviour
 {
+    // Updates player's spawn and life info when the player crosses the death plane.
     private void OnTriggerEnter(Collider other)
     {
         PhotonView photonView = other.GetComponent<PhotonView>();
