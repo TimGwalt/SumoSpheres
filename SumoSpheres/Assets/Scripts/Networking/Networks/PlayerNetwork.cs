@@ -35,7 +35,7 @@ public class PlayerNetwork : MonoBehaviour
 
     private void Update()
     {
-        if (PhotonNetwork.IsMasterClient && !m_InEndGame && m_GameStarted && m_PlayersInGame <= 0)
+        if (PhotonNetwork.IsMasterClient && !m_InEndGame && m_GameStarted && m_PlayersInGame <= 1)
         {
             PhotonNetwork.LoadLevel(3);
             m_PhotonView.RPC("RPC_LoadEndGameOthers", RpcTarget.Others);
@@ -51,7 +51,7 @@ public class PlayerNetwork : MonoBehaviour
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Jayden_Character_Test")
+        if (scene.name == "Sumo Select")
         {
             m_PlayersInSumoSelect = 0;
             m_PlayersInGame = 0;
@@ -60,7 +60,7 @@ public class PlayerNetwork : MonoBehaviour
             else
                 NonMasterLoadedSumoSelect();
         }
-        else if (scene.name == "Jayden_Test")
+        else if (scene.name == "Kyoto")
         {
             LoadedGame();
             // m_PhotonView.RPC("RPC_CreatePlayer", RpcTarget.All);
