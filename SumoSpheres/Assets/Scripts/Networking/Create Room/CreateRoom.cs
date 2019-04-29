@@ -14,6 +14,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks
         get { return m_RoomName;}
     }
 
+    // Called when user clicks on the Create button.
     public void OnClickCreateRoom()
     {
         Photon.Realtime.RoomOptions roomOptions = new Photon.Realtime.RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 5 };
@@ -27,11 +28,13 @@ public class CreateRoom : MonoBehaviourPunCallbacks
         }
     }
     
+    // Called by Photon when the server can not create the room.
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         print("Failed to create room. Code: " + returnCode + " | " + message);
     }
 
+    // Called by Photon when the server successfully creates the room.
     public override void OnCreatedRoom()
     {
         print("Room joined successfully.");

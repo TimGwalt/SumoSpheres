@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class LobbyNetwork : MonoBehaviourPunCallbacks
 {
+    // On component start, connect to the Photon master server.
     void Start()
     {
         if (!PhotonNetwork.IsConnected)
@@ -15,6 +16,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
         }
     }
 
+    // Called by Photon when the client has successfully connected to the master server.
     public override void OnConnectedToMaster()
     {
         print("Connected to master.");
@@ -23,7 +25,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
-    // TODO: Move UI canvas logic to this function
+    // Called by Photon when the client has successfully connected to the master lobby.
     public override void OnJoinedLobby()
     {
         print("Joined master lobby.");

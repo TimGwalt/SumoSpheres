@@ -12,6 +12,7 @@ public class PlayerListing : MonoBehaviour
         get { return m_PlayerName; }
     }
     
+    // Sets the player and player name of a player listing. Parameter player is the player the player listing represents.
     public void ApplyPhotonPlayer(Player player)
     {
         m_Player = player;
