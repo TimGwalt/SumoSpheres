@@ -46,14 +46,19 @@ public class PlayerNetwork : MonoBehaviour
         }
     }
 
+    // RPC to load the end game scene on other clients.
     [PunRPC]
     private void RPC_LoadEndGameOthers()
     {
         PhotonNetwork.LoadLevel(3);
     }
 
+    // Called whenever a scene has finished loading.
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        // Determine the name of the loaded scene. If the scene is the Sumo Select scene, set the number of players in
+        // sumo select and the number of players in the game to zero. Else, if the scene is the Kyoto game scene, call
+        // the LoadedGame() method.
         if (scene.name == "Sumo Select")
         {
             m_PlayersInSumoSelect = 0;
@@ -66,32 +71,37 @@ public class PlayerNetwork : MonoBehaviour
         else if (scene.name == "Kyoto")
         {
             LoadedGame();
-            // m_PhotonView.RPC("RPC_CreatePlayer", RpcTarget.All);
         }
     }
 
+    // Called whenever the master client loads Sumo Select.
     private void MasterLoadedSumoSelect()
     {
         m_PhotonView.RPC("RPC_LoadedSumoSelectScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
         m_PhotonView.RPC("RPC_LoadSumoSelectOthers", RpcTarget.Others);
     }
 
+    // Called whenever a non-master client loads Sumo Select.
     private void NonMasterLoadedSumoSelect()
     {
         m_PhotonView.RPC("RPC_LoadedSumoSelectScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
     }
 
+    // Called whenever a player has loaded the Kyoto game scene.
     private void LoadedGame()
     {
         m_PhotonView.RPC("RPC_LoadedGameScene", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer);
     }
 
+    // Photon RPC that will load the Sumo Select scene on other for other clients.
     [PunRPC]
     private void RPC_LoadSumoSelectOthers()
     {
         PhotonNetwork.LoadLevel(1);
     }
 
+    // Photon RPC that will add a player's info to the list of PlayerStats and update the number of players in Sumo Select.
+    // Parameter player is the player who's info will be added to the list of PlayerStats.
     [PunRPC]
     private void RPC_LoadedSumoSelectScene(Player player)
     {
@@ -104,6 +114,8 @@ public class PlayerNetwork : MonoBehaviour
         }
     }
 
+    // Photon RPC that will update the number of players in the game and, if all players have joined, signal all other clients
+    // to start the match and load into the game scene.
     [PunRPC]
     private void RPC_LoadedGameScene(Player player)
     {
@@ -117,16 +129,23 @@ public class PlayerNetwork : MonoBehaviour
         }
     }
 
+    // Photon RPC that will load the game scene on other clients.
+    [PunRPC]
     private void RPC_LoadGameSceneOthers()
     {
         PhotonNetwork.LoadLevel(2);
     }
 
+    // Public-facing method that sends an RPC that updates the lives of a player. Parameter player is the player who's lives
+    // need to be updated and parameter lives represents the new number of lives the player has.
     public void NewLives(Player player, int lives)
     {
         m_PhotonView.RPC("RPC_NewLives", player, lives);
     }
 
+
+    // Photon RPC that will destroy the player's game object if the player's number of lives has fallen below zero, else it will
+    // update the player's lives with the update number of lives. Parameter lives is the player's new number of lives.
     [PunRPC]
     private void RPC_NewLives(int lives)
     {
@@ -139,6 +158,7 @@ public class PlayerNetwork : MonoBehaviour
             m_CurrentPlayerMovement.m_Lives = lives;
     }
 
+    // Photon RPC that will instantiate a player on the network based on the local player's PlayerStats information.
     [PunRPC]
     private void RPC_CreatePlayer()
     {
@@ -149,11 +169,13 @@ public class PlayerNetwork : MonoBehaviour
         m_CurrentPlayerMovement = gameObject.GetComponent<NetworkBasePlayerMovement>();
     }
 
+    // Public-facing method that calls an RPC that updates the number of players in the game on the master client.
     public void NewDeath()
     {
         m_PhotonView.RPC("RPC_NewDeath", RpcTarget.MasterClient);
     }
 
+    // Photon RPC that will update the current number of players in the game.
     [PunRPC]
     private void RPC_NewDeath()
     {
