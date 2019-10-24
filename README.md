@@ -1,4 +1,5 @@
-# TeamCelebi
+# SumoSpheres  
+Oringinally developed by TeamCelebi.
 This is Team Celebi's Software Engineering II Project.
 
 # Fork Description
